@@ -1,7 +1,499 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basam Alasaly - Projects Portfolio</title>
+<meta name="description" content="Explore the projects and iOS applications developed by Basam Alasaly, highlighting their goals, technologies used, and key features.">
+<meta name="keywords" content="Basam Alasaly, iOS apps, web development, SwiftUI, Swift, DeFi, Fintech, Educational Apps, Projects Portfolio">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<!-- Include Font Awesome library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #474e5d;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.navbar {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: space-between;
+  background-color: #333;
+  padding: 10px 20px; /* Add padding for spacing */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center; /* Center vertically */
+}
+
+.navbar a {
+  display: flex;
+  align-items: center; /* Center vertically */
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a img {
+  margin-right: 8px; /* Space between image and text */
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #ddd;
+  color: #333;
+}
+
+.navbar .icon {
+  display: none;
+}
+
+.navbar a.name-link {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+  .navbar a.icon {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar.responsive {
+    position: fixed; /* Change from relative to fixed */
+    top: 0; /* Ensure it stays at the top */
+    width: 100%; /* Ensure it spans the full width */
+    overflow: hidden; /* Prevent overflow */
+    max-height: 100%; /* Ensure it can grow as much as needed */
+  }
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+  .navbar.responsive .navbar-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar.responsive a {
+    display: block;
+    text-align: left;
+    padding: 14px 16px; /* Ensure consistent padding */
+  }
+  .navbar.responsive a.name-link {
+    text-align: top;
+    padding: 15;
+    margin: 0 auto 10px auto;
+  }
+}
+
+.header {
+  position: relative;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  padding-top: 100px; /* Add padding to prevent content from being hidden behind navbar */
+}
+
+.header video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.header-content {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 17.5% 5%;
+}
+
+.header-content h1 {
+  margin-top: -75px; /* Adjust margin as needed */
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 2%;
+  overflow: hidden;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+  margin-bottom: 50px;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: #474e5d;
+  border: 4px solid white;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  left: 50%;
+}
+
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+.right::after {
+  left: -16px;
+}
+
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+  color: #474e5d;
+}
+
+@media screen and (max-width: 700px) {
+  .timeline::after {
+    left: 31px;
+  }
+
+  .container {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 25px;
+  }
+
+  .container::after {
+    left: 4px;
+  }
+
+  .container::before {
+    left: 60px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  .left::before,
+  .right::before {
+    left: 40px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  .right {
+    left: 0%;
+  }
+
+  .header-content h1 {
+    margin-top: -50px; /* Adjust margin as needed */
+  }
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10%;
+}
+
+a {
+  color: #474e5d;
+}
+
+.separator {
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  margin: 20px 0;
+  position: relative;
+  z-index: 2;
+  background-color: #474e5d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  width: 40%;
+  height: 2px;
+  background-color: white;
+  margin: 10px 0;
+  border-radius: 1px;
+}
+
+.separator::before {
+  order: -1;
+}
+</style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+<div class="navbar" id="myNavbar">
+  <div class="navbar-links">
+    <a href="#home" ><img src="images/profile_picture.webp" style="width:30px;height:30px;" class="profile-button"><p style ="margin:0px;">Basam Alasaly</p></a>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="mailto:contact@basamalasaly.com">Contact</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+    <i class="fas fa-bars"></i>
+  </a>
+</div>
+
+<script>
+function toggleNavbar() {
+  var x = document.getElementById("myNavbar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+</script>
+
+<div class="header" id="home">
+  <video autoplay muted loop>
+    <source src="/videos/home_header.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="header-content">
+    <h1>Welcome</h1>
+    <h3 style="font-weight:normal;color:white;">Thank you for visiting my personal website. Please feel free to explore my work and contact me for questions or collaborations.</h3>
+  </div>
+</div>
+
+<div class="timeline" id="projects">
+
+  <br />
+  <br />
+  <div class="separator">
+    <div class="line"></div>
+    <span>Live Projects</span>
+    <div class="line"></div>
+  </div>
+  
+  <div class="container left">
+    <div class="content">
+      <h3>January, 2024</h3>
+      <h2><a href="https://www.penny.cash/" target="_blank">Penny</a></h2>
+      <h4>Fintech iOS Mobile Application for Personal Finance Management - With a touch of AI</h4>
+      <img src="images/penny.webp" alt="Penny Logo">
+      <p>Penny is a fintech iOS application designed to revolutionize personal finance management by leveraging advanced AI technologies.</p>
+      <p>The app features a powerful AI financial assistant that prioritizes security and privacy, ensuring that your personal data remains secure on your device.</p>
+      <p>The Penny team consists of Tyler Kruer as the back-end API developer, Tomer Zilbershtein as the proprietary text classifier developer, Diego Fill leading marketing initiatives, and myself as the full-stack iOS developer. Our collective vision is to empower users to achieve their financial freedom goals with ease and confidence.</p>
+      <p>Our commitment to innovation and user-centric design makes it as simple to manage your finances as it is to talk to a friend.</p>
+      <p>Although, I am frankly not proud of the current version out there, we are working to improve and enhance our features to align with new developments in AI research.</p>
+      <a href="https://apps.apple.com/us/app/penny-subscription-manager/id6464439302" target="_blank">Check out Penny on the iOS App Store</a>
+    </div>
+  </div>
+  
+
+  <div class="container right">
+    <div class="content">
+      <h3>January, 2023</h3>
+      <h2><a href="https://www.shipwise.app/" target="_blank">ShipWise</a></h2>
+      <h4>Sustainable Shipping</h4>
+      <img src="images/shipwise.webp" alt="ShipWise Logo">
+      <p>ShipWise is an iOS eCommerce app I developed with two primary goals in mind. The first goal is to help reduce environmental carbon emissions by donating 1% of gross revenue to environmental causes. The second goal is to provide significant discounts on shipping labels, offering an incentive for users to choose ShipWise.</p> 
+      
+      <p>I developed the MVP (Minimum Viable Product) for this application in one week. ShipWise reflects a personal dedication to both environmental sustainability and providing value to users.</p>
+      
+      <a href="https://apps.apple.com/us/app/shipwise-usps-ups-fedex/id1662254299" target="_blank">Check out ShipWise on the iOS App Store</a>
+    </div>
+  </div>
+  
+  <div class="container left">
+    <div class="content">
+      <h3>October, 2020</h3>
+      <h2>Daily Astronomy</h2>
+      <h4>Leveraging NASA's APOD API</h4>
+      <img src="images/daily_astronomy.webp" alt="Daily Astronomy Logo">
+      <p>I developed an iOS application using SwiftUI 2.0 that leverages NASA's renowned Astronomy Picture of the Day (APOD) API. This popular API showcases stunning daily astronomy photos from NASA and allows users to retrieve images from previous dates. The app is free and offers a captivating way for users to explore the wonders of our universe through NASA's lens, complete with new widget support for a more dynamic home screen experience.</p>
+      
+      <a href="https://apps.apple.com/us/app/daily-astronomy/id1537366170" target="_blank">Check out Daily Astronomy on the iOS App Store</a>
+    </div>
+  </div>
+  
+  <div class="container right">
+    <div class="content">
+      <h3>July, 2014</h3>
+      <h2>HTML Simplified, Learning Web Development</h2>
+      <h4>A Udemy Course</h4>
+      <img src="images/html5_course.webp" alt="HTML Simplified Logo">
+      <p>I developed a comprehensive Hypertext Markup Language (HTML) course during high school, utilizing screen recording software and voice overlays to teach the fundamentals of website development.</p>
+      
+      <p>The course is designed to demystify HTML through practical examples and hands-on projects, making it accessible to learners of all backgrounds. No prior coding experience is required, making it ideal for beginners eager to build their first web pages.</p>
+      
+      <a href="https://www.udemy.com/user/basamalasaly/" target="_blank">Check out the course on my Udemy profile</a>
+    </div>
+  </div>
+
+  <div class="separator">
+    <div class="line"></div>
+    <span>Completed Projects</span>
+    <div class="line"></div>
+  </div>
+  
+  <div class="container left">
+    <div class="content">
+      <h3>April, 2021</h3>
+      <h2>Arizona State University Applied Project</h2>
+      <h4>Leveraging Hyperledger Fabric</h4>
+      <img src="images/hyperledger_fabric.webp" alt="Hyperledger Fabric Logo">
+      <p>I participated in a collaborative blockchain research project for a medical devices company, utilizing Hyperledger Fabric to enhance supply chain management. The project involved detailed research, development, and testing to explore the practical applications of blockchain technology in the industry. We focused on improving device location tracking, managing expiration dates, and streamlining the consignment device reordering process.</p>
+      
+      <p>Through meetings with corporate representatives and healthcare personnel, I gained valuable insights into the industrial supply chain and helped create efficient workflows to identify key data areas. Our efforts culminated in a successful proof of concept, demonstrating the benefits and capabilities of blockchain technology in real-world scenarios.</p>
+    </div>
+  </div>
+  
+  <div class="container right">
+    <div class="content">
+      <h3>April, 2020</h3>
+      <h2>LeukApp: Decision Support Web App</h2>
+      <h4>React App Usability Testing and Technical Revisions for HonorHealth</h4>
+      <img src="images/leukapp.webp" alt="LeukApp Logo">
+      <p>LeukApp is a clinical decision support web application designed to assist physicians in the risk assessment and treatment of acute myeloid leukemia. My role in this project involved evaluating LeukApp's usability following third-party development and implementing necessary modifications or enhancements to optimize its functionality. This project was a collaborative research effort between ASU and HonorHealth, aimed at aiding physicians' decision-making and resident training.</p>
+      
+      <p>I was a presenter for the LeukApp project at the <a href="https://symposium2019.zerista.com/event/member/602495" target="_blank">AMIA 2019 Annual Symposium</a>, where it was well received during a productive poster presentation session. Through my user testing with oncologists, fellows, and clinical administrators, I gained valuable insights into the importance of usability and UI/UX testing for ensuring end-user satisfaction and effectiveness in healthcare applications. This experience underscored the critical role of user-centered design in the development of clinical decision support tools.</p>
+    </div>
+  </div>
+
+  <div class="separator">
+    <div class="line"></div>
+    <span>Deprecated Projects</span>
+    <div class="line"></div>
+  </div>
+  
+  <div class="container left">
+    <div class="content">
+      <h3>December, 2021</h3>
+      <h2>DeFi Dashboard</h2>
+      <h4>First Native DeFi iOS Dashboard</h4>
+      <img src="images/defi_dashboard.webp" alt="DeFi Dashboard Logo">
+      <p>DeFi Dashboard was an iOS application developed using Apple's native SwiftUI and Swift. The app leveraged the <a href="https://cloud.debank.com/" target="_blank">DeBank API</a> to retrieve and display user balances in decentralized crypto assets and protocols, and reached community partner status with <a href="https://www.nftport.xyz/" target="_blank">NFTPort</a> (which ceased operations on 5/26/2024) to enhance its features.</p>
+      <p>The Minimum Viable Product (MVP) was developed in under two weeks. Due to its rapid growth, sustaining the application proved challenging from the high costs associated with API usage.</p>
+    </div>
+  </div>
+  
+  <div class="container right">
+    <div class="content">
+      <h3>June, 2020</h3>
+      <h2>BankFolio</h2>
+      <h4>Fintech iOS Mobile Application for Personal Finance Management</h4>
+      <img src="images/bankfolio.webp" alt="BankFolio Logo">
+      <p>I bootstrapped BankFolio using Apple's native SwiftUI and Swift, leveraging <a href="https://www.plaid.com/" target="_blank">Plaid API</a> to retrieve and display user bank account information and accompanying transactions in one place. I came across this idea when I got charged for subscriptions I forgot I had signed up for and wished there was an easier way to spot those transactions quicker at the time. After coming across Plaid's API and doing some research, I found apps out there offering this service for an average price of $6 a month, which is overpriced. The target audience for this type of application is looking to save money rather than spend it. I decided to provide this app to users at a near net operating cost based on their number of connected accounts so more people can take advantage of these features as they deserve to control their hard-earned money.</p>
+      <p>In 2022, BankFolio underwent an unsuccessful acquisition that ironically adversely impacted the company's financial health, primarily due to the integration of costly services, such as <a href="https://www.mx.com/" target="_blank">MX Finance</a>, without corresponding marketing strategies initiation.</p>
+    </div>
+  </div>
+  
+  <div class="container left">
+    <div class="content">
+      <h3>May, 2019</h3>
+      <h2>Mystery Math</h2>
+      <h4>Educational iOS Mobile Application for Kids</h4>
+      <img src="images/mystery_math.webp" alt="Mystery Math Logo">
+      <p>An iOS application I built with Swift 5 code using Nodes, array algorithm manipulations (a ton of math validations) and the SpriteKit framework on Xcode. The goal of this application is to teach kids addition, subtraction, multiplication, and addition with different levels. They can create their own game by picking which operations to test themselves on, and they can track their high score for a continuous record to beat.</p>
+    </div>
+  </div>
+
+  <div class="container right">
+    <div class="content">
+      <h3>January, 2019</h3>
+      <h2>Animal Farm: Animal Names</h2>
+      <h4>Educational iOS Mobile Application for Kids</h4>
+      <img src="images/animal_farm.webp" alt="Animal Farm Logo">
+      <p>An iOS application I built with Swift 4 code using Nodes, array algorithms, and the SpriteKit framework on Xcode. The goal of this application is to teach kids animals, their spelling, and their sounds by playing a simple game against a custom timer.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleNavbar() {
+  var x = document.getElementById("myNavbar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+</script>
+
 </body>
 </html>
