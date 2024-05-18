@@ -8,7 +8,6 @@
 <meta name="keywords" content="Basam Alasaly, iOS apps, web development, SwiftUI, Swift, DeFi, Fintech, Educational Apps, Projects Portfolio">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.webp">
-<!-- Include Font Awesome library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 * {
@@ -167,6 +166,10 @@ body {
   background-color: inherit;
   width: 50%;
   margin-bottom: 50px;
+  opacity: 0; /* Initially hide containers */
+  transform: translateY(50px); /* Initially move containers down */
+  transition: opacity 0.6s, transform 0.6s; /* Add transition for smooth effect */
+  z-index: 2;
 }
 
 .container::after {
@@ -179,7 +182,7 @@ body {
   border: 4px solid white;
   top: 15px;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 2;
 }
 
 .left {
@@ -301,6 +304,11 @@ a {
 
 .separator::before {
   order: -1;
+}
+
+.container.show {
+  opacity: 1; /* Show the container */
+  transform: translateY(0); /* Move the container to its original position */
 }
 </style>
 </head>
@@ -495,8 +503,22 @@ function toggleNavbar() {
     x.className = "navbar";
   }
 }
-</script>
 
+function checkScroll() {
+  var containers = document.querySelectorAll('.container');
+  var windowHeight = window.innerHeight;
+
+  containers.forEach(function(container) {
+    var positionFromTop = container.getBoundingClientRect().top;
+    if (positionFromTop - windowHeight <= 0) {
+      container.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', checkScroll);
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
