@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book an Appointment with Basam Alasaly</title>
+<meta name="description" content="Schedule an appointment with Basam Alasaly through Setmore.">
+<meta name="keywords" content="Basam Alasaly, Appointment, Booking, Setmore">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.webp">
+<!-- Include Font Awesome library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #33343F;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.navbar {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: space-between;
+  background-color: #111115;
+  padding: 10px 20px; /* Add padding for spacing */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center; /* Center vertically */
+}
+
+.navbar a {
+  display: flex;
+  align-items: center; /* Center vertically */
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a img {
+  margin-right: 8px; /* Space between image and text */
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #ddd;
+  color: #333;
+}
+
+.navbar .icon {
+  display: none;
+}
+
+.navbar a.name-link {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+  .navbar a.icon {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar.responsive {
+    position: fixed; /* Change from relative to fixed */
+    top: 0; /* Ensure it stays at the top */
+    width: 100%; /* Ensure it spans the full width */
+    overflow: hidden; /* Prevent overflow */
+    max-height: 100%; /* Ensure it can grow as much as needed */
+  }
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+  .navbar.responsive .navbar-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar.responsive a {
+    display: block;
+    text-align: left;
+    padding: 14px 16px; /* Ensure consistent padding */
+  }
+  .navbar.responsive a.name-link {
+    text-align: top;
+    padding: 15;
+    margin: 0 auto 10px auto;
+  }
+}
+
+.booking-container {
+  max-width: 800px;
+  margin: 100px auto 50px auto;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.booking-container h1 {
+  margin-bottom: 20px;
+}
+
+.booking-container iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  border-radius: 10px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="navbar" id="myNavbar">
+  <div class="navbar-links">
+    <a href="index.html"><img src="images/profile_picture.webp" style="width:30px;height:30px;" class="profile-button"><p style ="margin:0px;">Basam Alasaly</p></a>
+    <a href="index.html">Home</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="consulting.html">Consulting</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+    <i class="fas fa-bars"></i>
+  </a>
+</div>
+
+<div class="booking-container">
+  <h1>Book an Appointment</h1>
+  <iframe src="https://basam6xgn.setmore.com/basam"></iframe>
+</div>
+
+<script>
+function toggleNavbar() {
+  var x = document.getElementById("myNavbar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+</script>
+
+</body>
+</html>
