@@ -310,6 +310,33 @@ a {
   opacity: 1; /* Show the container */
   transform: translateY(0); /* Move the container to its original position */
 }
+
+/* Style the dropdown select box */
+#project-filter {
+  background-color: #111115; /* Same color as navbar */
+  color: #f2f2f2; /* Same color as navbar links */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 17px;
+  font-family: 'Roboto', sans-serif;
+  margin: 0 20px 10px 0; /* Space around the dropdown */
+  outline: none;
+}
+
+/* Style the dropdown options */
+#project-filter option {
+  background-color: #33343F;
+  color: #f2f2f2;
+}
+
+/* Position the dropdown on the right side */
+#project-filter {
+  position: absolute;
+  right: 10px; /* Adjust based on desired right margin */
+  z-index: 1000;
+}
+
 </style>
 <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </head>
@@ -319,6 +346,7 @@ a {
   <div class="navbar-links">
     <a href="index.html"><img src="images/profile_picture.webp" style="width:30px;height:30px;" class="profile-button"><p style ="margin:0px;">Basam Alasaly</p></a>
     <a href="index.html" class="active">Home</a>
+    <a href="books.html">Books</a>
     <a href="about.html">About</a>
     <a href="consulting.html">Consulting</a>
     <a href="contact.html">Contact</a>
@@ -352,16 +380,23 @@ function toggleNavbar() {
 </div>
 
 <div class="timeline" id="projects">
+    <div style="margin-top: 10px;">
+      <select id="project-filter" onchange="filterProjects()">
+        <option value="all">All Projects</option>
+        <option value="ios-app">iOS App Projects</option>
+        <option value="healthcare">Healthcare Projects</option>
+      </select>
+    </div>
 
   <br />
   <br />
-  <div class="separator">
+  <div class="separator" id="live-projects-separator">
     <div class="line"></div>
     <span>Live Projects</span>
     <div class="line"></div>
   </div>
   
-  <div class="container left">
+  <div class="container left" data-category="ios-app">
     <div class="content">
       <h3>January, 2024</h3>
       <h2><a href="https://www.penny.cash/" target="_blank">Penny</a></h2>
@@ -377,7 +412,7 @@ function toggleNavbar() {
   </div>
   
 
-  <div class="container right">
+  <div class="container right" data-category="ios-app">
     <div class="content">
       <h3>January, 2023</h3>
       <h2><a href="https://www.shipwise.app/" target="_blank">ShipWise</a></h2>
@@ -391,7 +426,7 @@ function toggleNavbar() {
     </div>
   </div>
   
-  <div class="container left">
+  <div class="container left" data-category="ios-app">
     <div class="content">
       <h3>October, 2020</h3>
       <h2>Daily Astronomy</h2>
@@ -403,7 +438,7 @@ function toggleNavbar() {
     </div>
   </div>
   
-  <div class="container right">
+  <div class="container right" data-category="course">
     <div class="content">
       <h3>July, 2014</h3>
       <h2>HTML Simplified, Learning Web Development</h2>
@@ -417,13 +452,13 @@ function toggleNavbar() {
     </div>
   </div>
 
-  <div class="separator">
+  <div class="separator" id="completed-projects-separator">
     <div class="line"></div>
     <span>Completed Projects</span>
     <div class="line"></div>
   </div>
   
-  <div class="container left">
+  <div class="container left" data-category="healthcare">
     <div class="content">
       <h3>April, 2021</h3>
       <h2>Arizona State University Applied Project</h2>
@@ -437,7 +472,7 @@ function toggleNavbar() {
     </div>
   </div>
   
-  <div class="container right">
+  <div class="container right" data-category="healthcare">
     <div class="content">
       <h3>April, 2020</h3>
       <h2>LeukApp: Decision Support Web App</h2>
@@ -464,13 +499,13 @@ function toggleNavbar() {
     </div>
   </div>
 
-  <div class="separator">
+  <div class="separator" id="deprecated-projects-separator">
     <div class="line"></div>
     <span>Deprecated Projects</span>
     <div class="line"></div>
   </div>
   
-  <div class="container left">
+  <div class="container left" data-category="ios-app">
     <div class="content">
       <h3>December, 2021</h3>
       <h2>DeFi Dashboard</h2>
@@ -481,7 +516,7 @@ function toggleNavbar() {
     </div>
   </div>
   
-  <div class="container right">
+  <div class="container right" data-category="ios-app">
     <div class="content">
       <h3>June, 2020</h3>
       <h2>BankFolio</h2>
@@ -493,7 +528,7 @@ function toggleNavbar() {
     </div>
   </div>
   
-  <div class="container left">
+  <div class="container left" data-category="ios-app">
     <div class="content">
       <h3>May, 2019</h3>
       <h2>Mystery Math</h2>
@@ -503,7 +538,7 @@ function toggleNavbar() {
     </div>
   </div>
 
-  <div class="container right">
+  <div class="container right" data-category="ios-app">
     <div class="content">
       <h3>January, 2019</h3>
       <h2>Animal Farm: Animal Names</h2>
@@ -536,8 +571,54 @@ function checkScroll() {
   });
 }
 
+function filterProjects() {
+  var filter = document.getElementById('project-filter').value;
+  var containers = document.querySelectorAll('.container');
+  var separators = document.querySelectorAll('.separator');
+  
+  var leftRightToggle = true;
+
+  // Hide or show containers based on filter
+  containers.forEach(function(container) {
+    if (filter === 'all') {
+      container.style.display = 'block';
+    } else if (container.getAttribute('data-category') === filter) {
+      container.style.display = 'block';
+    } else {
+      container.style.display = 'none';
+    }
+  });
+
+  // Ensure alternating left and right containers
+  containers.forEach(function(container) {
+    if (container.style.display === 'block') {
+      container.classList.remove('left', 'right');
+      if (leftRightToggle) {
+        container.classList.add('left');
+      } else {
+        container.classList.add('right');
+      }
+      leftRightToggle = !leftRightToggle;
+    }
+  });
+
+  // Check and hide or show separators based on container visibility
+  separators.forEach(function(separator) {
+    var nextElement = separator.nextElementSibling;
+    while (nextElement && !nextElement.classList.contains('separator')) {
+      if (nextElement.style.display === 'block') {
+        separator.style.display = 'flex';
+        return;
+      }
+      nextElement = nextElement.nextElementSibling;
+    }
+    separator.style.display = 'none';
+  });
+}
+
 window.addEventListener('scroll', checkScroll);
 window.addEventListener('load', checkScroll);
+window.addEventListener('load', filterProjects);
 </script>
 
 <script>

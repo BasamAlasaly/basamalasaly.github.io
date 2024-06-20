@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basam Alasaly - Books</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.webp">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #33343F;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.navbar {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: space-between;
+  background-color: #111115;
+  padding: 10px 20px; /* Add padding for spacing */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center; /* Center vertically */
+}
+
+.navbar a {
+  display: flex;
+  align-items: center; /* Center vertically */
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a img {
+  margin-right: 8px; /* Space between image and text */
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #ddd;
+  color: #333;
+}
+
+.navbar .icon {
+  display: none;
+}
+
+.navbar a.name-link {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.book-section {
+  margin-top: 75px;
+  padding-top: 100px;
+  padding: 20px;
+  background-color: #222;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.intro h2 {
+  font-size: 24px;
+}
+
+.bookshelf {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.book-card {
+  background-color: #444;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-card img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.book-card h3 {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.book-card p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.book-card a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.book-card a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.book-summary {
+  text-align: left;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.book-summary .summary-date {
+  font-size: 12px;
+  color: #bbb;
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar a.icon {
+    display: block;
+  }
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+  .navbar.responsive {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+  .navbar.responsive .navbar-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar.responsive a {
+    display: block;
+    text-align: left;
+    padding: 14px 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="navbar" id="myNavbar">
+  <div class="navbar-links">
+    <a href="index.html"><img src="images/profile_picture.webp" style="width:30px;height:30px;" class="profile-button"><p style ="margin:0px;">Basam Alasaly</p></a>
+    <a href="index.html">Home</a>
+    <a href="books.html" class="active">Books</a>
+    <a href="about.html">About</a>
+    <a href="consulting.html">Consulting</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://basamalasaly.medium.com/" target="_blank">Blog</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+    <i class="fas fa-bars"></i>
+  </a>
+</div>
+
+<div class="book-section">
+  <div class="intro">
+    <h2>My Reading List</h2>
+    <p>I decided to start this list in June 2024 and will continue to update it continuously.</p>
+    
+    <p>Below are some books I've read or am currently reading, along with my thoughts and summaries and their Amazon links.</p>
+  </div>
+  <div class="bookshelf">
+    <div class="book-card">
+      <img src="images/the_language_of_medicine.jpg" alt="Book Cover">
+      <h3>The Language of Medicine</h3>
+      <p>by Davi-Ellen Chabner</p>
+      <a href="https://www.amazon.com/Language-Medicine-Davi-Ellen-Chabner-MAT/dp/0323551475/ref=m_crc_dp_lf_d_t1_d_sccl_3_1/134-1270666-5903613?pd_rd_w=SBuQ8&content-id=amzn1.sym.a5144f00-3d78-40a4-aa84-7ff51eea31f7&pf_rd_p=a5144f00-3d78-40a4-aa84-7ff51eea31f7&pf_rd_r=HK1NSEPVKBWR31DXS3TZ&pd_rd_wg=JlN2E&pd_rd_r=1024aeae-39f2-4f04-bb9a-0b404a52b94f&pd_rd_i=0323551475&psc=1" style="padding-top:10px" target="_blank">View on Amazon</a>
+      <div class="book-summary">
+        <p><strong>Summary:</strong> Coming soon...</p>
+<!--        <p class="summary-date">Summary added on: June 19, 2024</p>-->
+        <p><strong>Recommended by:</strong> Dr. Anita Murcko</p>
+      </div>
+    </div>
+    <div class="book-card">
+      <img src="images/traction_how_any_startup_can_achieve_explosive_customer_growth.jpg" alt="Book Cover">
+      <h3>Traction: How Any Startup Can Achieve Explosive Customer Growth</h3>
+      <p>by Gabriel Weinberg and Justin Mares</p>
+      <a href="https://www.amazon.com/gp/product/1591848369/ref=ox_sc_act_title_1?smid=ATVPDKIKX0DER&psc=1" style="padding-top:10px" target="_blank">View on Amazon</a>
+      <div class="book-summary">
+        <p><strong>Summary:</strong> Coming soon...</p>
+<!--        <p class="summary-date">Summary added on: June 19, 2024</p>-->
+        <p><strong>Recommended by:</strong> Diego Fill</p>
+      </div>
+    </div>
+    <div class="book-card">
+      <img src="images/html_and_css_design_and_build_websites.jpg" alt="Book Cover">
+      <h3>HTML and CSS: Design and Build Websites</h3>
+      <p>by Jon Duckett</p>
+      <a href="https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189/?_encoding=UTF8&pd_rd_w=3DHwd&content-id=amzn1.sym.f911c8db-3a2b-4b3e-952f-b80fdcee83f4&pf_rd_p=f911c8db-3a2b-4b3e-952f-b80fdcee83f4&pf_rd_r=134-1270666-5903613&pd_rd_wg=nHszL&pd_rd_r=b405c0dd-2d0b-4306-b995-439a648c838b&ref_=aufs_ap_sc_dsk" style="padding-top:10px" target="_blank">View on Amazon</a>
+      <div class="book-summary">
+        <p><strong>Summary:</strong> This book was my gateway into the world of development. It's effortless to follow, with code and images of what the code looks like, along with great explanations. It's the perfect starting point for anyone looking to learn programming and the fundamentals of web development. Thanks to this book, I can code the website you're browsing right now!</p>
+        <br />
+        <p>While this book doesn't cover JavaScript, which I've used on this site, it's an excellent foundation for aspiring full-stack web developers.I recommend beginning with this book, advancing to Jon Duckett's <a href="https://www.amazon.com/JavaScript-JQuery-Interactive-Front-End-Development/dp/1118531647/?_encoding=UTF8&pd_rd_w=w6UaD&content-id=amzn1.sym.f911c8db-3a2b-4b3e-952f-b80fdcee83f4&pf_rd_p=f911c8db-3a2b-4b3e-952f-b80fdcee83f4&pf_rd_r=134-1270666-5903613&pd_rd_wg=J1mre&pd_rd_r=cf8396cd-3c19-46b2-a445-1e6722109b1f&ref_=aufs_ap_sc_dsk" target="_blank">JavaScript & jQuery</a>, and exploring his <a href="https://www.amazon.com/PHP-MySQL-Server-side-Web-Development/dp/1119149223/?_encoding=UTF8&pd_rd_w=w6UaD&content-id=amzn1.sym.f911c8db-3a2b-4b3e-952f-b80fdcee83f4&pf_rd_p=f911c8db-3a2b-4b3e-952f-b80fdcee83f4&pf_rd_r=134-1270666-5903613&pd_rd_wg=J1mre&pd_rd_r=cf8396cd-3c19-46b2-a445-1e6722109b1f&ref_=aufs_ap_sc_dsk" target="_blank">PHP & MySQL</a> for a comprehensive learning path. You can purchase all three as a set <a href="https://www.amazon.com/Front-End-Back-End-Development-JavaScript-jQuery/dp/1119813093/?_encoding=UTF8&pd_rd_w=idJmx&content-id=amzn1.sym.f911c8db-3a2b-4b3e-952f-b80fdcee83f4&pf_rd_p=f911c8db-3a2b-4b3e-952f-b80fdcee83f4&pf_rd_r=134-1270666-5903613&pd_rd_wg=66NGm&pd_rd_r=6e46c6e6-4ea4-42af-b8ca-583c88ab394c&ref_=aufs_ap_sc_dsk" target="_blank">here</a>.</p>
+        <p class="summary-date">Summary added on: June 19, 2024</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleNavbar() {
+  var x = document.getElementById("myNavbar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+</script>
+
+</body>
+</html>
