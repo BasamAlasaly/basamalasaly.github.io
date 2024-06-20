@@ -334,7 +334,7 @@ a {
 #project-filter {
   position: absolute;
   right: 10px; /* Adjust based on desired right margin */
-  z-index: 1000;
+  z-index: 500;
 }
 
 </style>
@@ -383,8 +383,9 @@ function toggleNavbar() {
     <div style="margin-top: 10px;">
       <select id="project-filter" onchange="filterProjects()">
         <option value="all">All Projects</option>
-        <option value="ios-app">iOS App Projects</option>
+        <option value="course">Courses</option>
         <option value="healthcare">Healthcare Projects</option>
+        <option value="ios-app">iOS App Projects</option>
       </select>
     </div>
 
