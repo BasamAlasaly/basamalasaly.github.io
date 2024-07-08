@@ -151,6 +151,22 @@ body {
   margin-top: 15px;
 }
 
+.quote {
+  font-style: italic;
+  color: #ddd;
+  text-align: center;
+  margin: 20px auto;
+  padding: 15px;
+  border-left: 4px solid #000;
+  max-width: 850px; /* Max width of the text portion */
+  background-color: #222;
+  border-radius: 5px;
+}
+.quote footer {
+  text-align: right;
+  font-weight: bold;
+}
+
 @media screen and (max-width: 600px) {
   .navbar a:not(:first-child) {
     display: none;
@@ -206,6 +222,11 @@ body {
   <div class="intro">
     <h2>My Reading List</h2>
     <p>I decided to start this list in June 2024 and will update it continuously as I progress.</p>
+    
+    <blockquote class="quote">
+        “The more I read, the more I acquire, the more certain I am that I know nothing.”
+        <footer>― Voltaire</footer>
+    </blockquote>
     
     <p>Below are some books I've read or am currently reading, along with my thoughts and summaries and their Amazon links.</p>
   </div>
