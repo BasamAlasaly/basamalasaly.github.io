@@ -6,114 +6,138 @@
 <title>Research - Basam Alasaly</title>
 <meta name="description" content="Academic research, publications, presentations, and scholarly work by Basam Alasaly in biomedical informatics, clinical research, and healthcare technology.">
 <meta name="keywords" content="Basam Alasaly, Research, Publications, AMIA, Biomedical Informatics, Clinical Research, Healthcare Technology, Academic Papers">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.webp">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: #33343F;
-  font-family: 'Roboto', sans-serif;
+  background: #0a0a0a;
+  font-family: 'Inter', sans-serif;
   color: #fff;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #111115;
-  padding: 10px 20px;
+  background-color: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(20px);
+  padding: 15px 30px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.navbar-brand img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 12px;
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
+  gap: 30px;
 }
 
-.navbar a {
-  display: flex;
-  align-items: center;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
+.navbar-links a {
+  color: #ccc;
   text-decoration: none;
-  font-size: 17px;
+  font-weight: 400;
+  font-size: 0.95em;
+  transition: color 0.3s ease;
+  position: relative;
 }
 
-.navbar a img {
-  margin-right: 8px;
+.navbar-links a:hover {
+  color: #fff;
 }
 
-.navbar a:hover {
-  background: #ddd;
-  color: black;
+.navbar-links a.active {
+  color: #5FF280;
 }
 
-.navbar a.active {
-  background-color: #ddd;
-  color: #333;
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #5FF280;
+  transition: width 0.3s ease;
 }
 
-.navbar .icon {
+.navbar-links a:hover::after,
+.navbar-links a.active::after {
+  width: 100%;
+}
+
+.menu-toggle {
   display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
 }
 
-.navbar a.name-link {
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-}
-
-@media screen and (max-width: 600px) {
-  .navbar a:not(:first-child) {
-    display: none;
-  }
-  .navbar a.icon {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .navbar.responsive {
+@media (max-width: 768px) {
+  .navbar-links {
     position: fixed;
-    top: 0;
-    width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-  }
-  .navbar.responsive .icon {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-  }
-  .navbar.responsive .navbar-links {
+    top: 70px;
+    right: -100%;
+    width: 250px;
+    height: calc(100vh - 70px);
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
+    gap: 30px;
+    transition: right 0.3s ease;
+    border-left: 1px solid rgba(95, 242, 128, 0.2);
   }
-  .navbar.responsive a {
+  
+  .navbar-links.active {
+    right: 0;
+  }
+  
+  .navbar-links a {
+    font-size: 1.2em;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .menu-toggle {
     display: block;
-    text-align: left;
-    padding: 14px 16px;
-  }
-  .navbar.responsive a.name-link {
-    text-align: top;
-    padding: 15;
-    margin: 0 auto 10px auto;
   }
 }
 
 .publications-section {
-  margin-top: 75px;
+  margin-top: 80px;
   padding: 40px 20px;
   max-width: 1200px;
   margin-left: auto;
@@ -123,12 +147,17 @@ body {
 .page-header {
   text-align: center;
   margin-bottom: 40px;
+  animation: fadeInUp 1.2s ease-out;
 }
 
 .page-header h1 {
   font-size: 2.5em;
   margin-bottom: 10px;
   color: #fff;
+  background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .page-header p {
@@ -136,6 +165,19 @@ body {
   color: #ccc;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .filter-tabs {
@@ -147,19 +189,52 @@ body {
 }
 
 .filter-tab {
-  background-color: #444;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
   transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
 }
 
 .filter-tab:hover, .filter-tab.active {
-  background-color: #4CAF50;
-  color: white;
+  transform: translateY(-2px);
+}
+
+/* Category-specific filter button colors */
+.filter-tab.paper-filter:hover, .filter-tab.paper-filter.active {
+  background-color: rgba(64, 184, 255, 0.1);
+  border-color: #40B8FF;
+  color: #40B8FF;
+}
+
+.filter-tab.presentation-filter:hover, .filter-tab.presentation-filter.active {
+  background-color: rgba(255, 107, 107, 0.1);
+  border-color: #FF6B6B;
+  color: #FF6B6B;
+}
+
+.filter-tab.abstract-filter:hover, .filter-tab.abstract-filter.active {
+  background-color: rgba(156, 136, 255, 0.1);
+  border-color: #9C88FF;
+  color: #9C88FF;
+}
+
+.filter-tab.capstone-filter:hover, .filter-tab.capstone-filter.active {
+  background-color: rgba(255, 196, 54, 0.1);
+  border-color: #FFC436;
+  color: #FFC436;
+}
+
+/* Default (All, years) keep green */
+.filter-tab.default-filter:hover, .filter-tab.default-filter.active {
+  background-color: rgba(95, 242, 128, 0.1);
+  border-color: #5FF280;
+  color: #5FF280;
 }
 
 .publications-container {
@@ -169,17 +244,37 @@ body {
 }
 
 .publication-card {
-  background-color: #222;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
   padding: 25px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-left: 4px solid #4CAF50;
+  transition: all 0.4s ease;
+  border-left: 4px solid #5FF280;
   position: relative;
+  overflow: hidden;
+}
+
+.publication-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.publication-card:hover::before {
+  left: 100%;
 }
 
 .publication-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(95, 242, 128, 0.3);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 .publication-header {
@@ -193,7 +288,7 @@ body {
 
 .publication-title {
   font-size: 1.3em;
-  font-weight: bold;
+  font-weight: 600;
   color: #fff;
   margin: 0;
   flex: 1;
@@ -201,12 +296,13 @@ body {
 }
 
 .publication-date {
-  background-color: #4CAF50;
-  color: white;
-  padding: 5px 12px;
+  background-color: #5FF280;
+  color: #000;
+  padding: 6px 14px;
   border-radius: 15px;
   font-size: 0.9em;
   white-space: nowrap;
+  font-weight: 500;
 }
 
 .publication-details {
@@ -214,8 +310,8 @@ body {
 }
 
 .publication-venue {
-  color: #4CAF50;
-  font-weight: bold;
+  color: #5FF280;
+  font-weight: 500;
   margin-bottom: 5px;
 }
 
@@ -232,12 +328,13 @@ body {
 
 .publication-type {
   display: inline-block;
-  background-color: #555;
-  color: #fff;
-  padding: 3px 8px;
+  background-color: rgba(95, 242, 128, 0.1);
+  color: #5FF280;
+  padding: 4px 10px;
   border-radius: 12px;
   font-size: 0.8em;
   margin-top: 5px;
+  border: 1px solid rgba(95, 242, 128, 0.3);
 }
 
 .publication-links {
@@ -250,18 +347,19 @@ body {
 .publication-link {
   display: inline-flex;
   align-items: center;
-  background-color: #4CAF50;
-  color: white;
+  background-color: rgba(95, 242, 128, 0.1);
+  color: #5FF280;
   padding: 8px 15px;
   border-radius: 20px;
   text-decoration: none;
   font-size: 0.9em;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(95, 242, 128, 0.3);
 }
 
 .publication-link:hover {
-  background-color: #45a049;
-  color: white;
+  background-color: #5FF280;
+  color: #000;
 }
 
 .publication-link i {
@@ -271,35 +369,28 @@ body {
 .acknowledgements-section, .activities-section {
   margin-top: 50px;
   padding-top: 30px;
-  border-top: 2px solid #444;
+  border-top: 2px solid rgba(95, 242, 128, 0.2);
 }
 
 .section-title {
   font-size: 2em;
-  color: #4CAF50;
+  color: #5FF280;
   margin-bottom: 25px;
   text-align: center;
 }
 
-.acknowledgement-card, .activity-card {
-  background-color: #222;
-  border-radius: 10px;
+.acknowledgement-card, .activity-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
-  border-left: 4px solid #FF9800;
+  border-left: 4px solid #5FF280;
+  transition: all 0.3s ease;
 }
 
-.activity-list {
-  list-style: none;
-  padding: 0;
-}
-
-.activity-item {
-  background-color: #222;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-left: 4px solid #2196F3;
+.acknowledgement-card:hover, .activity-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
 }
 
 .activity-links {
@@ -310,18 +401,19 @@ body {
 }
 
 .activity-link {
-  color: #2196F3;
+  color: #5FF280;
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #2196F3;
+  border: 1px solid rgba(95, 242, 128, 0.3);
   border-radius: 15px;
   font-size: 0.9em;
   transition: all 0.3s ease;
+  background: rgba(95, 242, 128, 0.1);
 }
 
 .activity-link:hover {
-  background-color: #2196F3;
-  color: white;
+  background-color: #5FF280;
+  color: #000;
 }
 
 @media screen and (max-width: 768px) {
@@ -355,43 +447,83 @@ body {
 }
 
 /* Publication type specific colors */
-.type-paper { border-left-color: #4CAF50; }
-.type-presentation { border-left-color: #2196F3; }
-.type-poster { border-left-color: #FF9800; }
-.type-abstract { border-left-color: #9C27B0; }
-.type-capstone { border-left-color: #607D8B; }
+.type-paper {
+  border-left-color: #40B8FF;
+}
+
+.type-presentation, .type-poster {
+  border-left-color: #FF6B6B;
+}
+
+.type-abstract {
+  border-left-color: #9C88FF;
+}
+
+.type-capstone {
+  border-left-color: #FFC436;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .hero {
+    position: static !important;
+    height: auto !important;
+    width: 100% !important;
+    min-height: unset !important; /* This is crucial */
+  }
+
+  .navigation-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important; /* Remove row definitions */
+    height: auto !important;
+    min-height: unset !important; /* Remove this constraint */
+    width: 100% !important;
+  }
+  
+  .nav-card, .profile-card {
+    min-height: 150px; /* Reasonable minimum */
+    height: auto;
+  }
+}
 </style>
 </head>
 <body>
 
-<div class="navbar" id="myNavbar">
-  <div class="navbar-links">
-    <a href="index.html"><img src="images/profile_picture.webp" style="width:30px;height:30px;" class="profile-button"><p style ="margin:0px;">Basam Alasaly</p></a>
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <img src="images/profile_picture.webp" alt="Profile">
+    Basam Alasaly
+  </a>
+  <div class="navbar-links" id="navbarLinks">
     <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="research.html" class="active">Research</a>
     <a href="about.html">About</a>
-    <a href="publications.html" class="active">Research</a>
-    <a href="consulting.html">Consulting</a>
     <a href="contact.html">Contact</a>
     <a href="https://basamalasaly.medium.com/" target="_blank">Blog</a>
   </div>
-  <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+  <button class="menu-toggle" onclick="toggleMobileMenu()">
     <i class="fas fa-bars"></i>
-  </a>
-</div>
+  </button>
+</nav>
 
 <div class="publications-section">
   <div class="page-header">
     <h1>Research</h1>
-    <p>Research exploring how technology can make healthcare better. From AI projects to clinical tools, here's what I've been working on and sharing with the world.</p>
+    <p>From AI projects to clinical tools, here's what I've been working on</p>
   </div>
 
   <div class="filter-tabs">
-    <button class="filter-tab active" onclick="filterPublications('all')">All</button>
-    <button class="filter-tab" onclick="filterPublications('paper')">Papers</button>
-    <button class="filter-tab" onclick="filterPublications('presentation')">Presentations</button>
-    <button class="filter-tab" onclick="filterPublications('abstract')">Abstracts</button>
-    <button class="filter-tab" onclick="filterPublications('2025')">2025</button>
-    <button class="filter-tab" onclick="filterPublications('2024')">2024</button>
+    <button class="filter-tab default-filter active" onclick="filterPublications('all')">All</button>
+    <button class="filter-tab paper-filter" onclick="filterPublications('paper')">Papers</button>
+    <button class="filter-tab presentation-filter" onclick="filterPublications('presentation')">Presentations</button>
+    <button class="filter-tab abstract-filter" onclick="filterPublications('abstract')">Abstracts</button>
+    <button class="filter-tab default-filter" onclick="filterPublications('2025')">2025</button>
+    <button class="filter-tab default-filter" onclick="filterPublications('2024')">2024</button>
   </div>
 
   <div class="publications-container">
@@ -600,7 +732,6 @@ body {
       <p>Aided with the development of a COVID-19 Urgent Statistics Dashboard as a volunteer, collaborating with Arizona State University and the University of Arizona for the Arizona Department of Health Services.</p>
       <div class="activity-links">
         <a href="http://u.pc.cd/jQF7" target="_blank" class="activity-link">PowerPoint</a>
-        <!-- <a href="https://youtu.be/abBiKZE0eSU?si=9LcB9DW3Wz3-Hw2_" target="_blank" class="activity-link">Video Presentation</a> -->
       </div>
     </div>
 
@@ -608,7 +739,6 @@ body {
       <p>Volunteered for technical improvements on the LeukApp project mentioned previously.</p>
       <div class="activity-links">
         <a href="https://www.researchgate.net/publication/341998530_Leukemia_Decision_Support_Web_Application_Development_Process" target="_blank" class="activity-link">Poster</a>
-        <!-- <a href="https://youtu.be/mHMl2ZEMQXs" target="_blank" class="activity-link">Video Presentation</a> -->
       </div>
     </div>
   </div>
@@ -616,14 +746,29 @@ body {
 </div>
 
 <script>
-function toggleNavbar() {
-  var x = document.getElementById("myNavbar");
-  if (x.className === "navbar") {
-    x.className += " responsive";
+// Mobile menu toggle
+function toggleMobileMenu() {
+  const navLinks = document.getElementById('navbarLinks');
+  const menuToggle = document.querySelector('.menu-toggle i');
+  
+  navLinks.classList.toggle('active');
+  
+  if (navLinks.classList.contains('active')) {
+    menuToggle.className = 'fas fa-times';
   } else {
-    x.className = "navbar";
+    menuToggle.className = 'fas fa-bars';
   }
 }
+
+// Add scroll effect to navbar
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 50) {
+    navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+  } else {
+    navbar.style.background = 'rgba(10, 10, 10, 0.9)';
+  }
+});
 
 function filterPublications(type) {
   const cards = document.querySelectorAll('.publication-card');

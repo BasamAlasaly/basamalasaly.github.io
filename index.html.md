@@ -1,99 +1,85 @@
-# Main Portfolio Page - Project Timeline
+# Homepage - Full-Screen 6-Card Grid Navigation
+
+## Design Overview
+Complete redesign from traditional homepage to a modern 6-card grid interface inspired by Jonathan Patterson's aesthetic. Features a full-screen viewport-covering navigation system with glassmorphism effects and mobile-responsive design.
 
 ## Page Structure
-- **Video Header**: Auto-playing background video with welcome message
-- **Navigation Bar**: Fixed responsive navbar with profile picture and main sections
-- **Project Filter**: Dropdown to filter projects by category (All, Courses, Healthcare, iOS Apps)
-- **Interactive Timeline**: Alternating left/right layout showcasing projects chronologically
+- **Full-Screen Grid**: 3x2 card layout covering entire viewport (100vw × 100vh)
+- **Hidden Navigation**: Traditional navbar completely hidden (display: none)
+- **Profile Card**: Special top-left card with personal information
+- **Navigation Cards**: Projects, Research, About, Contact cards with hover effects
+- **Mobile Contact Section**: Additional mobile-only contact links at bottom
 
-## Project Categories
+## Card Layout
 
-### Live Projects
-1. **ShipWiz** (Jan 2023, rebranded Nov 2024)
-   - Sustainable shipping iOS app
-   - 1% revenue donated to environmental causes
-   - Built MVP in one week
-   - Available on iOS App Store
+### Profile Card (Top-Left)
+- **Profile Header**: Photo, name, and title
+- **Quote Section**: Voltaire quote with centered layout
+- **Location**: Philadelphia, PA with gradient divider
+- **Styling**: Left-aligned text, flexbox layout
 
-2. **Daily Astronomy** (Oct 2020)
-   - iOS app using NASA's APOD API
-   - Built with SwiftUI 2.0
-   - Widget support for iOS home screen
-   - Free astronomy education tool
+### Navigation Cards
+1. **Projects Card** - Commercial applications and iOS development
+2. **Research Card** - Academic work and publications  
+3. **About Card** - Personal background and journey
+4. **Contact Card** - Get in touch information
 
-3. **HTML Simplified Course** (Jul 2014)
-   - Udemy course for web development
-   - Screen-recorded tutorials
-   - Beginner-friendly HTML education
+Each card features:
+- **Default State**: Icon, title, and description visible
+- **Hover State**: Large centered icon with title overlay
+- **Glassmorphism**: Semi-transparent background with backdrop blur
+- **Animations**: Smooth transitions and hover effects
 
-### Completed Projects
-1. **REDCap Video-Labeling Research** (Sep 2024)
-   - Novel workflow for multimedia research
-   - AWS integration with REDCap
-   - Presented at REDCapCon 2024
-   - GitHub repository and ResearchGate poster available
+## Mobile Responsiveness
 
-2. **ASU Applied Project** (Apr 2021)
-   - Hyperledger Fabric blockchain implementation
-   - Medical device supply chain tracking
-   - Corporate collaboration with healthcare personnel
-   - Published research paper available
+### Mobile Layout (≤768px)
+- **Grid**: Single column vertical stacking
+- **Scrolling**: Enabled with position: static override
+- **Card Size**: Minimum 200px height with flexible content
+- **Profile Card**: Smaller photo and text sizes
+- **Contact Section**: Mobile-only "Other Ways to Connect" with horizontal links
 
-3. **LeukApp Decision Support** (Apr 2020)
-   - Clinical web application for leukemia assessment
-   - React-based user interface
-   - HonorHealth collaboration
-   - AMIA 2019 symposium presentation
-   - Usability testing and technical documentation
+### Tablet Layout (640px-1024px)
+- **Grid**: 2x3 layout maintaining card structure
+- **Responsive**: Maintains hover effects and animations
 
-### Deprecated Projects
-1. **Penny** (Jan 2024)
-   - AI-powered fintech iOS app
-   - Team of 4 developers
-   - Privacy-focused personal finance management
-   - Sunsetted end of 2024
-
-2. **DeFi Dashboard** (Dec 2021)
-   - First native DeFi iOS dashboard
-   - DeBank API integration
-   - NFTPort community partnership
-   - Built with SwiftUI in under 2 weeks
-
-3. **BankFolio** (Jun 2020)
-   - Personal finance management app
-   - Plaid API integration
-   - Cost-effective subscription model
-   - Unsuccessful acquisition in 2022
-
-4. **Mystery Math** (May 2019)
-   - Educational iOS app for children
-   - SpriteKit framework implementation
-   - Math operations teaching tool
-   - High score tracking system
-
-5. **Animal Farm: Animal Names** (Jan 2019)
-   - Educational iOS app for kids
-   - Animal learning game with sounds
-   - SpriteKit framework with custom timer
+## Mobile-Only Contact Section
+- **Visibility**: Hidden on desktop, shown on mobile only
+- **Links**: Email, LinkedIn, GitHub in horizontal flex layout
+- **Styling**: Glassmorphism background matching design system
+- **Position**: Bottom of navigation grid on mobile
 
 ## Technical Implementation
 
-### CSS Features
-- Dark theme (#33343F background)
-- Responsive design with mobile breakpoints
-- Smooth scroll animations
-- Timeline with connecting lines and dots
-- Project card hover effects
+### CSS Architecture
+- **CSS Grid**: 3x2 layout with full viewport coverage
+- **Glassmorphism**: `backdrop-filter: blur(10px)` effects
+- **Color Scheme**: #5FF280 green accent, #0a0a0a dark background
+- **Typography**: Inter font family for modern appearance
+- **Animations**: fadeInUp keyframes with staggered delays
 
-### JavaScript Functionality
-- Project filtering by category
-- Responsive navbar toggle
-- Scroll-triggered animations
-- Timeline container visibility management
-- Video autoplay controls
+### JavaScript Features
+- **Scroll Handling**: Disabled on desktop, enabled on mobile
+- **Animation Triggers**: Staggered card appearance
+- **Mobile Menu**: Standard toggle functionality (though navbar hidden)
 
 ### Performance Optimizations
-- WebP image format for better compression
-- Responsive image sizes (130px, 500px, 800px, 1080px variants)
-- Font preloading (Google Fonts Roboto)
-- CSS-in-HTML for faster loading
+- **Font Loading**: Google Fonts with display=swap
+- **Image Optimization**: WebP format profile picture
+- **CSS-in-HTML**: Inline styles for faster loading
+- **Minimal Dependencies**: Font Awesome icons only
+
+## Hover Effects
+- **Icon Scale**: Transform scale(1) on hover
+- **Background**: Enhanced glassmorphism opacity
+- **Border**: Green accent border color
+- **Shadow**: Elevated shadow for depth
+- **Content**: Hide default content, show large icon overlay
+
+## Design Philosophy
+Inspired by Jonathan Patterson's modern, clean aesthetic with emphasis on:
+- **Minimalism**: Clean, uncluttered interface
+- **Glassmorphism**: Modern semi-transparent design trend
+- **Mobile-First**: Responsive design prioritizing mobile experience
+- **Accessibility**: High contrast ratios and readable typography
+- **Performance**: Fast loading with optimized assets

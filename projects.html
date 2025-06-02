@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects - Basam Alasaly</title>
+<meta name="description" content="Commercial projects and iOS applications developed by Basam Alasaly, highlighting solutions in fintech, education, and sustainable technology.">
+<meta name="keywords" content="Basam Alasaly, Projects, iOS apps, web development, SwiftUI, Swift, DeFi, Fintech, Educational Apps">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.webp">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0a0a0a;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(20px);
+  padding: 15px 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.navbar-brand img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navbar-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.95em;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.navbar-links a:hover {
+  color: #fff;
+}
+
+.navbar-links a.active {
+  color: #5FF280;
+}
+
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #5FF280;
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover::after,
+.navbar-links a.active::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 250px;
+    height: calc(100vh - 70px);
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
+    gap: 30px;
+    transition: right 0.3s ease;
+    border-left: 1px solid rgba(95, 242, 128, 0.2);
+  }
+  
+  .navbar-links.active {
+    right: 0;
+  }
+  
+  .navbar-links a {
+    font-size: 1.2em;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.projects-section {
+  margin-top: 80px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.page-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.page-header p {
+  font-size: 1.2em;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 2%;
+  overflow: hidden;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background: linear-gradient(180deg, #5FF280 0%, #4CAF50 50%, #5FF280 100%);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(95, 242, 128, 0.5);
+  }
+}
+
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+  margin-bottom: 50px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  z-index: 2;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: #0a0a0a;
+  border: 4px solid #5FF280;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  left: 50%;
+}
+
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid rgba(255, 255, 255, 0.1);
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.1);
+}
+
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid rgba(255, 255, 255, 0.1);
+  border-width: 10px 10px 10px 0;
+  border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
+}
+
+.right::after {
+  left: -16px;
+}
+
+.content {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  border-radius: 20px;
+  color: #fff;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(95, 242, 128, 0.03), transparent);
+  transition: left 0.5s ease;
+}
+
+.container:hover .content::before {
+  left: 100%;
+}
+
+.container:hover .content {
+  transform: translateY(-8px);
+  border-color: rgba(95, 242, 128, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.content img {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.container:hover .content img {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.content h2 {
+  color: #5FF280;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.content h3 {
+  color: #ccc;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.content h4 {
+  color: #5FF280;
+  font-weight: 500;
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+.content p {
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.content a {
+  color: #5FF280;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.content a:hover {
+  color: #fff;
+}
+
+.content a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #5FF280;
+  transition: width 0.3s ease;
+}
+
+.content a:hover::after {
+  width: 100%;
+}
+
+.container.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.separator {
+  text-align: center;
+  color: #5FF280;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 40px 0;
+  position: relative;
+  z-index: 2;
+  background-color: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #5FF280, transparent);
+  margin: 10px 0;
+  border-radius: 1px;
+}
+
+.separator::before {
+  order: -1;
+}
+
+@media screen and (max-width: 700px) {
+  .timeline::after {
+    left: 31px;
+  }
+
+  .projects-section {
+    padding: 20px 15px;
+    margin-top: 100px;
+  }
+
+  .page-header h1 {
+    font-size: 2em;
+  }
+
+  .page-header p {
+    font-size: 1em;
+  }
+
+  .container {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 25px;
+  }
+
+  .container::after {
+    left: 4px;
+  }
+
+  .container::before {
+    left: 60px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
+  }
+
+  .left::before,
+  .right::before {
+    left: 40px;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
+  }
+
+  .right {
+    left: 0%;
+  }
+
+  .content {
+    padding: 20px;
+  }
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10%;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <img src="images/profile_picture.webp" alt="Profile">
+    Basam Alasaly
+  </a>
+  <div class="navbar-links" id="navbarLinks">
+    <a href="index.html">Home</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="research.html">Research</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://basamalasaly.medium.com/" target="_blank">Blog</a>
+  </div>
+  <button class="menu-toggle" onclick="toggleMobileMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+</nav>
+
+<div class="projects-section">
+  <div class="page-header">
+    <h1>Projects</h1>
+    <p>Commercial applications and solutions spanning fintech, education, and sustainable technology</p>
+  </div>
+
+  <div class="timeline">
+    <div class="separator">
+      <span>Live Projects</span>
+    </div>
+
+    <div class="container right">
+      <div class="content">
+        <h3>Jan, 2023 <small><i>- Rebranded Nov, 2024</i></small></h3>
+        <h2><a href="https://www.shipwiz.app/" target="_blank">ShipWiz</a></h2>
+        <h4>Sustainable Shipping</h4>
+        <img src="images/shipwiz.png" alt="ShipWiz Logo">
+        <p>ShipWiz is an iOS eCommerce app I developed with two primary goals in mind. The first goal is to help reduce environmental carbon emissions by donating 1% of gross revenue to environmental causes. The second goal is to provide significant discounts on shipping labels, offering an incentive for users to choose ShipWiz.</p> 
+        
+        <p>The MVP (Minimum Viable Product) for this application was developed in one week. ShipWiz reflects a personal dedication to both environmental sustainability and providing value to users.</p>
+        
+        <a href="https://apps.apple.com/us/app/shipwiz-shipping-labels/id6737173498" target="_blank">Check out ShipWiz on the iOS App Store</a>
+      </div>
+    </div>
+    
+    <div class="container left">
+      <div class="content">
+        <h3>Oct, 2020</h3>
+        <h2>Daily Astronomy</h2>
+        <h4>Leveraging NASA's APOD API</h4>
+        <img src="images/daily_astronomy.webp" alt="Daily Astronomy Logo">
+        <p>Daily Astronomy is an iOS application I developed using SwiftUI 2.0, leveraging NASA's renowned Astronomy Picture of the Day (APOD) API. This popular API showcases stunning daily astronomy photos from NASA and allows users to retrieve images from previous dates. The app is free and offers a captivating way for users to explore the wonders of our universe through NASA's lens, complete with new widget support for a more dynamic home screen experience.</p>
+        
+        <a href="https://apps.apple.com/us/app/daily-astronomy/id1537366170" target="_blank">Check out Daily Astronomy on the iOS App Store</a>
+      </div>
+    </div>
+    
+    <div class="container right">
+      <div class="content">
+        <h3>Jul, 2014</h3>
+        <h2>HTML Simplified, Learning Web Development</h2>
+        <h4>A Udemy Course</h4>
+        <img src="images/html5_course.webp" alt="HTML Simplified Logo">
+        <p>HTML Simplified is a comprehensive Hypertext Markup Language (HTML) course I developed during high school, utilizing screen recording software and voice overlays to teach the fundamentals of website development.</p>
+        
+        <p>The course is designed to demystify HTML through practical examples and hands-on projects, making it accessible to learners of all backgrounds. No prior coding experience is required, making it ideal for beginners eager to build their first web pages.</p>
+        
+        <a href="https://www.udemy.com/user/basamalasaly/" target="_blank">View the course on Udemy</a>
+      </div>
+    </div>
+
+    <div class="separator">
+      <span>Deprecated Projects</span>
+    </div>
+
+    <div class="container left">
+      <div class="content">
+        <h3>January, 2024</h3>
+        <h2>Penny</h2>
+        <h4>Fintech iOS Mobile Application for Personal Finance Management - With a touch of AI</h4>
+        <img src="images/penny.webp" alt="Penny Logo">
+        <p>Penny is a fintech iOS application that redefined personal finance management by leveraging advanced AI technologies. With an AI financial assistant at its core, Penny prioritized security and privacy, ensuring that users' personal data remained secure on their devices.</p>
+        <p>The Penny team comprised Tyler Kruer (back-end API developer), Tomer Zilbershtein (proprietary text classifier developer), Diego Fill (marketing lead), and myself as the full-stack iOS developer. Together, we aimed to empower users to achieve financial freedom with ease and confidence, blending innovation and user-centric design.</p>
+        <p>Penny sunsetted at the end of 2024 due to the rapid advancements in AI and increasing time commitments for all team members. We're proud of the impact it has had and grateful to our users for being part of Penny's journey.</p>
+      </div>
+    </div>
+    
+    <div class="container right">
+      <div class="content">
+        <h3>Dec, 2021</h3>
+        <h2>DeFi Dashboard</h2>
+        <h4>First Native DeFi iOS Dashboard</h4>
+        <img src="images/defi_dashboard.webp" alt="DeFi Dashboard Logo">
+        <p>DeFi Dashboard was an iOS application developed using Apple's native SwiftUI and Swift. The app leveraged the <a href="https://cloud.debank.com/" target="_blank">DeBank API</a> to retrieve and display user balances in decentralized crypto assets and protocols, and reached community partner status with <a href="https://www.nftport.xyz/" target="_blank">NFTPort</a> (which ceased operations on 5/26/2024) to enhance its features.</p>
+        <p>The Minimum Viable Product (MVP) was developed in under two weeks. Due to its rapid growth, sustaining the application proved challenging from the high costs associated with API usage.</p>
+      </div>
+    </div>
+    
+    <div class="container left">
+      <div class="content">
+        <h3>Jun, 2020</h3>
+        <h2>BankFolio</h2>
+        <h4>Fintech iOS Mobile Application for Personal Finance Management</h4>
+        <img src="images/bankfolio.webp" alt="BankFolio Logo">
+        <p>BankFolio is an app I bootstrapped using Apple's native SwiftUI and Swift, leveraging the <a href="https://www.plaid.com/" target="_blank">Plaid API</a> to retrieve and display user bank account information and accompanying transactions in one place. The idea came about when I got charged for subscriptions I forgot I had signed up for and wished there was an easier way to spot those transactions quickly. After discovering Plaid's API and doing some research, I found apps offering this service for an average price of $6 a month, which seemed overpriced. The target audience for this type of application is looking to save money rather than spend it. Therefore, I decided to provide this app to users at a near net operating cost based on their number of connected accounts so more people could take advantage of these features and control their hard-earned money.</p>
+        
+        <p>In 2022, BankFolio underwent an unsuccessful acquisition that adversely impacted the company's financial health, primarily due to the integration of costly services, such as <a href="https://www.mx.com/" target="_blank">MX Finance</a>, without corresponding marketing strategies initiation.</p>
+      </div>
+    </div>
+    
+    <div class="container right">
+      <div class="content">
+        <h3>May, 2019</h3>
+        <h2>Mystery Math</h2>
+        <h4>Educational iOS Mobile Application for Kids</h4>
+        <img src="images/mystery_math.webp" alt="Mystery Math Logo">
+        <p>Mystery Math is an iOS application I built with Swift 5 code using Nodes, array algorithm manipulations (a ton of math validations), and the SpriteKit framework on Xcode. The goal of this application is to teach kids addition, subtraction, multiplication, and division with different levels. They can create their own game by picking which operations to test themselves on, and they can track their high score for a continuous record to beat.</p>
+      </div>
+    </div>
+
+    <div class="container left">
+      <div class="content">
+        <h3>Jan, 2019</h3>
+        <h2>Animal Farm: Animal Names</h2>
+        <h4>Educational iOS Mobile Application for Kids</h4>
+        <img src="images/animal_farm.webp" alt="Animal Farm Logo">
+        <p>Animal Farm: Animal Names is an iOS application I built with Swift 4 code using Nodes, array algorithms, and the SpriteKit framework on Xcode. The goal of this application is to teach kids animals, their spelling, and their sounds by playing a simple game against a custom timer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Mobile menu toggle
+function toggleMobileMenu() {
+  const navLinks = document.getElementById('navbarLinks');
+  const menuToggle = document.querySelector('.menu-toggle i');
+  
+  navLinks.classList.toggle('active');
+  
+  if (navLinks.classList.contains('active')) {
+    menuToggle.className = 'fas fa-times';
+  } else {
+    menuToggle.className = 'fas fa-bars';
+  }
+}
+
+// Add scroll effect to navbar
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 50) {
+    navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+  } else {
+    navbar.style.background = 'rgba(10, 10, 10, 0.9)';
+  }
+});
+
+function checkScroll() {
+  var containers = document.querySelectorAll('.container');
+  var windowHeight = window.innerHeight;
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  containers.forEach(function(container, index) {
+    var positionFromTop = container.getBoundingClientRect().top;
+    // Trigger animation when element is 80% visible
+    if (positionFromTop - windowHeight <= -windowHeight * 0.2) {
+      // Add a slight delay for staggered effect
+      setTimeout(function() {
+        container.classList.add('show');
+      }, index * 100);
+    }
+  });
+}
+
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', checkScroll);
+</script>
+
+</body>
+</html>

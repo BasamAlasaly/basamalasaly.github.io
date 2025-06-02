@@ -3,516 +3,871 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Basam Alasaly - Projects Portfolio</title>
-<meta name="description" content="Explore the projects and iOS applications developed by Basam Alasaly, highlighting their goals, technologies used, and key features.">
-<meta name="keywords" content="Basam Alasaly, iOS apps, web development, SwiftUI, Swift, DeFi, Fintech, Educational Apps, Projects Portfolio">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<title>Basam Alasaly - Portfolio</title>
+<meta name="description" content="Portfolio of Basam Alasaly - iOS developer, researcher, and healthcare technology innovator.">
+<meta name="keywords" content="Basam Alasaly, iOS developer, researcher, biomedical informatics, portfolio">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.webp">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: #33343F;
-  font-family: 'Roboto', sans-serif;
+  background: #0a0a0a;
+  font-family: 'Inter', sans-serif;
   color: #fff;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 .navbar {
+  display: none;
+}
+
+.navbar-brand {
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: space-between;
-  background-color: #111115;
-  padding: 10px 20px; /* Add padding for spacing */
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.navbar-brand img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 12px;
 }
 
 .navbar-links {
   display: flex;
-  align-items: center; /* Center vertically */
+  align-items: center;
+  gap: 30px;
 }
 
-.navbar a {
-  display: flex;
-  align-items: center; /* Center vertically */
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
+.navbar-links a {
+  color: #ccc;
   text-decoration: none;
-  font-size: 17px;
+  font-weight: 400;
+  font-size: 0.95em;
+  transition: color 0.3s ease;
+  position: relative;
 }
 
-.navbar a img {
-  margin-right: 8px; /* Space between image and text */
+.navbar-links a:hover {
+  color: #fff;
 }
 
-.navbar a:hover {
-  background: #ddd;
-  color: black;
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #5FF280;
+  transition: width 0.3s ease;
 }
 
-.navbar a.active {
-  background-color: #ddd;
-  color: #333;
+.navbar-links a:hover::after {
+  width: 100%;
 }
 
-.navbar .icon {
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 250px;
+    height: calc(100vh - 70px);
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
+    gap: 30px;
+    transition: right 0.3s ease;
+    border-left: 1px solid rgba(95, 242, 128, 0.2);
+  }
+  
+  .navbar-links.active {
+    right: 0;
+  }
+  
+  .navbar-links a {
+    font-size: 1.2em;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.hero {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(95, 242, 128, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(95, 242, 128, 0.03) 0%, transparent 50%);
+  z-index: -1;
+}
+
+.hero-content {
+  width: 100vw;
+  height: 100vh;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero h1, .hero p {
   display: none;
 }
 
-.navbar a.name-link {
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navigation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  padding: 40px 30px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+}
+
+.nav-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-card:hover::before {
+  left: 100%;
+}
+
+.nav-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(95, 242, 128, 0.4);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nav-card-icon {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  display: block;
+  color: #5FF280;
+  transition: all 0.4s ease;
+  opacity: 1;
+}
+
+.nav-card h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+  transition: all 0.4s ease;
+  opacity: 1;
+}
+
+.nav-card p {
+  color: #ccc;
+  line-height: 1.5;
+  font-weight: 300;
+  font-size: 0.9em;
+  transition: all 0.4s ease;
+  opacity: 1;
+}
+
+.hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(5px);
+  text-align: center;
+}
+
+.hover-icon {
+  font-size: 4em;
+  color: #5FF280;
+  transform: scale(0.8);
+  transition: all 0.4s ease;
+  margin-bottom: 15px;
+}
+
+.hover-overlay h3 {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.nav-card:hover .hover-overlay {
+  opacity: 1;
+}
+
+.nav-card:hover .hover-icon {
+  transform: scale(1);
+}
+
+.nav-card:hover .hover-overlay h3 {
+  transform: translateY(0);
+}
+
+/* Ensure all nav-card content is visible by default */
+.navigation-grid .nav-card .nav-card-icon,
+.navigation-grid .nav-card h3,
+.navigation-grid .nav-card p {
+  opacity: 1;
+  visibility: visible;
+  display: block;
+}
+
+/* Ensure profile card content is always visible */
+.profile-card .profile-header,
+.profile-card .profile-info h2,
+.profile-card .profile-info .title,
+.profile-card .quote-section,
+.profile-card .location-section,
+.profile-card .location {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hide content only on hover - but keep h3 visible for overlay */
+.navigation-grid .nav-card:hover .nav-card-icon,
+.navigation-grid .nav-card:hover p {
+  opacity: 0;
+}
+
+/* Keep h3 visible on hover for overlay display */
+.navigation-grid .nav-card:hover h3 {
+  opacity: 1;
+}
+
+/* Profile card - top left */
+.profile-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  padding: 40px 30px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+  text-align: left;
+}
+
+.profile-header {
   display: flex;
   align-items: center;
-  margin: 0 auto;
+  gap: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+  flex-direction: row;
 }
 
-@media screen and (max-width: 600px) {
-  .navbar a:not(:first-child) {
-    display: none;
-  }
-  .navbar a.icon {
-    display: block;
-  }
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #5FF280;
+  flex-shrink: 0;
+  align-self: center;
 }
 
-@media screen and (max-width: 600px) {
-  .navbar.responsive {
-    position: fixed; /* Change from relative to fixed */
-    top: 0; /* Ensure it stays at the top */
-    width: 100%; /* Ensure it spans the full width */
-    overflow: hidden; /* Prevent overflow */
-    max-height: 100%; /* Ensure it can grow as much as needed */
-  }
-  .navbar.responsive .icon {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-  }
-  .navbar.responsive .navbar-links {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .navbar.responsive a {
-    display: block;
-    text-align: left;
-    padding: 14px 16px; /* Ensure consistent padding */
-  }
-  .navbar.responsive a.name-link {
-    text-align: top;
-    padding: 15;
-    margin: 0 auto 10px auto;
-  }
+.profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
 }
 
-.header {
-  position: relative;
+.profile-info h2 {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  line-height: 1.2;
+}
+
+.profile-info .title {
+  font-size: 0.9em;
+  color: #5FF280;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  line-height: 1.2;
+}
+
+.quote-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 20px 0;
+}
+
+.quote-section blockquote {
+  font-size: 1.1em;
+  font-style: italic;
+  color: #fff;
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.quote-section cite {
+  font-size: 0.9em;
+  color: #ccc;
+  font-style: normal;
+  text-align: right;
+  width: 100%;
+  display: block;
+}
+
+.location-section {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.location-section hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, #5FF280, transparent);
+  margin: 10px 0;
+}
+
+.location-section .location {
+  text-align: left;
+  color: #ccc;
+  font-size: 0.9em;
+  margin: 0;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+.contact-methods {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.contact-method {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1.1em;
+}
+
+.contact-method:hover {
+  background: rgba(95, 242, 128, 0.2);
+  border-color: #5FF280;
+  color: #5FF280;
+  transform: translateY(-2px);
+}
+
+/* Special hover overlay for contact card */
+.contact-card .hover-overlay .contact-methods {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.contact-card .hover-overlay .contact-method {
+  width: 50px;
+  height: 50px;
+  font-size: 1.5em;
+  background: rgba(95, 242, 128, 0.1);
+  border-color: #5FF280;
+  color: #5FF280;
+}
+
+/* Mobile-only contact info section styling */
+.mobile-only {
+  display: none;
+}
+
+.contact-info {
+  margin-top: 0;
+  padding: 25px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
   text-align: center;
-  color: white;
-  overflow: hidden;
-  padding-top: 100px; /* Add padding to prevent content from being hidden behind navbar */
 }
 
-.header video {
+.contact-info h3 {
+  color: #5FF280;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex-direction: row;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.contact-link:hover {
+  color: #5FF280;
+  background: rgba(95, 242, 128, 0.1);
+  border-color: rgba(95, 242, 128, 0.3);
+  transform: translateY(-2px);
+}
+
+.contact-link i {
+  font-size: 1.1em;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+
+  .hero {
+    position: static !important;
+    height: auto !important;
+    width: 100% !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  .hero-content {
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .navigation-grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important;
+    gap: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    display: grid !important;
+  }
+  
+  .nav-card, .profile-card {
+    padding: 30px 20px !important;
+    border-radius: 0 !important;
+    min-height: 200px !important;
+    height: auto !important;
+    position: relative !important;
+  }
+  
+  .profile-header {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .profile-info h2 {
+    font-size: 1.1em;
+  }
+  
+  .profile-info .title {
+    font-size: 0.8em;
+  }
+  
+  .quote-section {
+    margin: 15px 0;
+  }
+  
+  .quote-section blockquote {
+    font-size: 1em;
+  }
+  
+  .contact-methods {
+    gap: 12px;
+  }
+  
+  .contact-method {
+    width: 32px;
+    height: 32px;
+    font-size: 1em;
+  }
+  
+  /* Show mobile-only contact info on mobile */
+  .mobile-only {
+    display: block !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .navigation-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .nav-card, .profile-card {
+    padding: 35px 25px;
+    border-radius: 0;
+  }
+}
+
+.floating-elements {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  object-fit: cover;
-}
-
-.header-content {
-  position: relative;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 17.5% 5%;
-}
-
-.header-content h1 {
-  margin-top: -75px; /* Adjust margin as needed */
-}
-
-.timeline {
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px 2%;
   overflow: hidden;
+  z-index: -1;
 }
 
-.timeline::after {
-  content: '';
+.floating-element {
   position: absolute;
-  width: 6px;
-  background-color: white;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -3px;
-}
-
-.container {
-  padding: 10px 40px;
-  position: relative;
-  background-color: inherit;
-  width: 50%;
-  margin-bottom: 50px;
-  opacity: 0; /* Initially hide containers */
-  transform: translateY(50px); /* Initially move containers down */
-  transition: opacity 0.6s, transform 0.6s; /* Add transition for smooth effect */
-  z-index: 2;
-}
-
-.container::after {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  right: -17px;
-  background-color: #33343F;
-  border: 4px solid white;
-  top: 15px;
+  width: 4px;
+  height: 4px;
+  background: rgba(95, 242, 128, 0.2);
   border-radius: 50%;
-  z-index: 2;
+  animation: float 6s ease-in-out infinite;
 }
 
-.left {
-  left: 0;
-}
+.floating-element:nth-child(1) { left: 10%; animation-delay: 0s; }
+.floating-element:nth-child(2) { left: 20%; animation-delay: 1s; }
+.floating-element:nth-child(3) { left: 30%; animation-delay: 2s; }
+.floating-element:nth-child(4) { left: 40%; animation-delay: 3s; }
+.floating-element:nth-child(5) { left: 50%; animation-delay: 4s; }
+.floating-element:nth-child(6) { left: 60%; animation-delay: 5s; }
+.floating-element:nth-child(7) { left: 70%; animation-delay: 0.5s; }
+.floating-element:nth-child(8) { left: 80%; animation-delay: 1.5s; }
+.floating-element:nth-child(9) { left: 90%; animation-delay: 2.5s; }
 
-.right {
-  left: 50%;
-}
-
-.left::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  right: 30px;
-  border: medium solid white;
-  border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent white;
-}
-
-.right::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  left: 30px;
-  border: medium solid white;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent white transparent transparent;
-}
-
-.right::after {
-  left: -16px;
-}
-
-.content {
-  padding: 20px 30px;
-  background-color: white;
-  position: relative;
-  border-radius: 6px;
-  color: #33343F;
-}
-
-@media screen and (max-width: 700px) {
-  .timeline::after {
-    left: 31px;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
   }
-
-  .container {
-    width: 100%;
-    padding-left: 50px;
-    padding-right: 25px;
-  }
-
-  .container::after {
-    left: 4px;
-  }
-
-  .container::before {
-    left: 60px;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
-  }
-
-  .left::before,
-  .right::before {
-    left: 40px;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
-  }
-
-  .right {
-    left: 0%;
-  }
-
-  .header-content h1 {
-    margin-top: -50px; /* Adjust margin as needed */
+  50% {
+    transform: translateY(-100px) rotate(180deg);
+    opacity: 0.8;
   }
 }
-
-img {
-  width: 200px;
-  height: 200px;
-  border-radius: 10%;
-}
-
-a {
-  color: #33343F;
-}
-
-.separator {
-  text-align: center;
-  color: white;
-  font-size: 24px;
-  margin: 20px 0;
-  position: relative;
-  z-index: 2;
-  background-color: #33343F;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.separator::before,
-.separator::after {
-  content: '';
-  width: 40%;
-  height: 2px;
-  background-color: white;
-  margin: 10px 0;
-  border-radius: 1px;
-}
-
-.separator::before {
-  order: -1;
-}
-
-.container.show {
-  opacity: 1; /* Show the container */
-  transform: translateY(0); /* Move the container to its original position */
-}
-
-
 </style>
 <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </head>
 <body>
 
-<div class="navbar" id="myNavbar">
-  <div class="navbar-links">
-    <a href="index.html"><img src="images/profile_picture.webp" style="width:30px;height:30px;" class="profile-button"><p style ="margin:0px;">Basam Alasaly</p></a>
-    <a href="index.html" class="active">Home</a>
-    <!-- <a href="books.html">Books</a> -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">
+    <img src="images/profile_picture.webp" alt="Profile">
+    Basam Alasaly
+  </a>
+  <div class="navbar-links" id="navbarLinks">
+    <a href="projects.html">Projects</a>
+    <a href="research.html">Research</a>
     <a href="about.html">About</a>
-    <a href="publications.html">Research</a>
-    <a href="consulting.html">Consulting</a>
     <a href="contact.html">Contact</a>
     <a href="https://basamalasaly.medium.com/" target="_blank">Blog</a>
   </div>
-  <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+  <button class="menu-toggle" onclick="toggleMobileMenu()">
     <i class="fas fa-bars"></i>
-  </a>
-</div>
+  </button>
+</nav>
+
+<main class="hero">
+  <div class="floating-elements">
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+  </div>
+  
+  <div class="hero-content">    
+    <div class="navigation-grid">
+      <div class="profile-card">
+        <div class="profile-header">
+          <img src="images/profile_picture.webp" alt="Profile" class="profile-pic">
+          <div class="profile-info">
+            <h2>Basam Alasaly</h2>
+            <p class="title">Indie developer, researcher, and student building useful tools</p>
+          </div>
+        </div>
+        <div class="quote-section">
+          <blockquote>"The more I read, the more I acquire, the more certain I am that I know nothing."</blockquote>
+          <cite>- Voltaire</cite>
+        </div>
+        <div class="location-section">
+          <hr>
+          <p class="location">Philadelphia, PA</p>
+        </div>
+      </div>
+      
+      <a href="projects.html" class="nav-card projects">
+        <i class="fas fa-code nav-card-icon"></i>
+        <h3>Projects</h3>
+        <p>Commercial applications spanning fintech, education, and sustainable technology</p>
+        <div class="hover-overlay">
+          <i class="fas fa-code hover-icon"></i>
+          <h3>Projects</h3>
+        </div>
+      </a>
+      
+      <a href="research.html" class="nav-card research">
+        <i class="fas fa-flask nav-card-icon"></i>
+        <h3>Research</h3>
+        <p>Academic work exploring how technology can make healthcare better</p>
+        <div class="hover-overlay">
+          <i class="fas fa-flask hover-icon"></i>
+          <h3>Research</h3>
+        </div>
+      </a>
+      
+      <a href="about.html" class="nav-card about">
+        <i class="fas fa-user nav-card-icon"></i>
+        <h3>About</h3>
+        <p>My journey in programming, research, and healthcare innovation</p>
+        <div class="hover-overlay">
+          <i class="fas fa-user hover-icon"></i>
+          <h3>About</h3>
+        </div>
+      </a>
+      
+      <a href="https://basamalasaly.medium.com/" target="_blank" class="nav-card blog">
+        <i class="fab fa-medium nav-card-icon"></i>
+        <h3>Blog</h3>
+        <p>Insights, thoughts, and stories from the world of tech and healthcare</p>
+        <div class="hover-overlay">
+          <i class="fab fa-medium hover-icon"></i>
+          <h3>Blog</h3>
+        </div>
+      </a>
+      
+      <a href="contact.html" class="nav-card contact-card">
+        <i class="fas fa-envelope nav-card-icon"></i>
+        <h3>Contact</h3>
+        <p>Get in touch for questions, collaborations, or just to say hello</p>
+        <div class="hover-overlay">
+          <i class="fas fa-envelope hover-icon"></i>
+          <h3>Contact</h3>
+        </div>
+        <!-- <div class="contact-methods">
+          <a href="mailto:contact@basamalasaly.com" class="contact-method" onclick="event.stopPropagation();">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/basamalasaly/" target="_blank" class="contact-method" onclick="event.stopPropagation();">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/basamalasaly" target="_blank" class="contact-method" onclick="event.stopPropagation();">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <div class="hover-overlay">
+          <div class="contact-methods">
+            <a href="mailto:contact@basamalasaly.com" class="contact-method" onclick="event.stopPropagation();">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/basamalasaly/" target="_blank" class="contact-method" onclick="event.stopPropagation();">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/basamalasaly" target="_blank" class="contact-method" onclick="event.stopPropagation();">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div> -->
+      </a>
+      
+    </div>
+    
+    <!-- Contact info for mobile only -->
+    <div class="contact-info mobile-only">
+      <h3>Other Ways to Connect</h3>
+      <div class="contact-links">
+        <a href="mailto:contact@basamalasaly.com" class="contact-link">
+          <i class="fas fa-envelope"></i>
+          Email Me
+        </a>
+        <a href="https://www.linkedin.com/in/basamalasaly/" target="_blank" class="contact-link">
+          <i class="fab fa-linkedin"></i>
+          LinkedIn
+        </a>
+        <a href="https://github.com/basamalasaly" target="_blank" class="contact-link">
+          <i class="fab fa-github"></i>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
 
 <script>
-function toggleNavbar() {
-  var x = document.getElementById("myNavbar");
-  if (x.className === "navbar") {
-    x.className += " responsive";
+// Add scroll effect to navbar
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 50) {
+    navbar.style.background = 'rgba(10, 10, 10, 0.95)';
   } else {
-    x.className = "navbar";
+    navbar.style.background = 'rgba(10, 10, 10, 0.9)';
+  }
+});
+
+// Add staggered animation to nav cards
+document.addEventListener('DOMContentLoaded', function() {
+  const cards = document.querySelectorAll('.nav-card');
+  cards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.1}s`;
+    card.style.animation = 'fadeInUp 0.8s ease-out forwards';
+  });
+});
+
+// Mobile menu toggle
+function toggleMobileMenu() {
+  const navLinks = document.getElementById('navbarLinks');
+  const menuToggle = document.querySelector('.menu-toggle i');
+  
+  navLinks.classList.toggle('active');
+  
+  // Change icon
+  if (navLinks.classList.contains('active')) {
+    menuToggle.className = 'fas fa-times';
+  } else {
+    menuToggle.className = 'fas fa-bars';
   }
 }
-</script>
-
-<div class="header" id="home">
-  <video id="myVideo" autoplay muted loop playsinline>
-    <source src="/videos/home_header.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="header-content">
-    <h1>Welcome</h1>
-    <h3 style="font-weight:normal;color:white;">Thank you for visiting my personal website. Please feel free to explore my work and contact me for questions or collaborations.</h3>
-  </div>
-</div>
-
-<div class="timeline" id="projects">
-
-  <br />
-  <br />
-  <div class="separator" id="live-projects-separator">
-    <div class="line"></div>
-    <span>Live Projects</span>
-    <div class="line"></div>
-  </div>
-
-  <div class="container right" data-category="ios-app">
-    <div class="content">
-      <h3>Jan, 2023 <small><i>- Rebranded Nov, 2024</i></small></h3>
-      <h2><a href="https://www.shipwiz.app/" target="_blank">ShipWiz</a></h2>
-      <h4>Sustainable Shipping</h4>
-      <img src="images/shipwiz.png" alt="ShipWiz Logo">
-      <p>ShipWiz is an iOS eCommerce app I developed with two primary goals in mind. The first goal is to help reduce environmental carbon emissions by donating 1% of gross revenue to environmental causes. The second goal is to provide significant discounts on shipping labels, offering an incentive for users to choose ShipWiz.</p> 
-      
-      <p>The MVP (Minimum Viable Product) for this application was developed in one week. ShipWiz reflects a personal dedication to both environmental sustainability and providing value to users.</p>
-      
-      <a href="https://apps.apple.com/us/app/shipwiz-shipping-labels/id6737173498" target="_blank">Check out ShipWiz on the iOS App Store</a>
-    </div>
-  </div>
-  
-  <div class="container left" data-category="ios-app">
-    <div class="content">
-      <h3>Oct, 2020</h3>
-      <h2>Daily Astronomy</h2>
-      <h4>Leveraging NASA's APOD API</h4>
-      <img src="images/daily_astronomy.webp" alt="Daily Astronomy Logo">
-      <p>Daily Astronomy is an iOS application I developed using SwiftUI 2.0, leveraging NASA's renowned Astronomy Picture of the Day (APOD) API. This popular API showcases stunning daily astronomy photos from NASA and allows users to retrieve images from previous dates. The app is free and offers a captivating way for users to explore the wonders of our universe through NASA's lens, complete with new widget support for a more dynamic home screen experience.</p>
-      
-      <a href="https://apps.apple.com/us/app/daily-astronomy/id1537366170" target="_blank">Check out Daily Astronomy on the iOS App Store</a>
-    </div>
-  </div>
-  
-  <div class="container right" data-category="course">
-    <div class="content">
-      <h3>Jul, 2014</h3>
-      <h2>HTML Simplified, Learning Web Development</h2>
-      <h4>A Udemy Course</h4>
-      <img src="images/html5_course.webp" alt="HTML Simplified Logo">
-      <p>HTML Simplified is a comprehensive Hypertext Markup Language (HTML) course I developed during high school, utilizing screen recording software and voice overlays to teach the fundamentals of website development.</p>
-      
-      <p>The course is designed to demystify HTML through practical examples and hands-on projects, making it accessible to learners of all backgrounds. No prior coding experience is required, making it ideal for beginners eager to build their first web pages.</p>
-      
-      <a href="https://www.udemy.com/user/basamalasaly/" target="_blank">View the course on Udemy</a>
-    </div>
-  </div>
-
-  <br />
-  <br />
-  <!-- <div class="separator" id="abandoned-projects-separator">
-    <div class="line"></div>
-    <span>Abandoned Projects</span>
-    <div class="line"></div>
-  </div> -->
-
-  <div class="separator" id="completed-projects-separator">
-    <div class="line"></div>
-    <span>Completed Projects</span>
-    <div class="line"></div>
-  </div>
-  
-  <div class="separator" id="deprecated-projects-separator">
-    <div class="line"></div>
-    <span>Deprecated Projects</span>
-    <div class="line"></div>
-  </div>
-
-  <div class="container right" data-category="ios-app">
-    <div class="content">
-      <h3>January, 2024</h3>
-      <h2>Penny</h2>
-      <h4>Fintech iOS Mobile Application for Personal Finance Management - With a touch of AI</h4>
-      <img src="images/penny.webp" alt="Penny Logo">
-      <p>Penny is a fintech iOS application that redefined personal finance management by leveraging advanced AI technologies. With an AI financial assistant at its core, Penny prioritized security and privacy, ensuring that users' personal data remained secure on their devices.</p>
-      <p>The Penny team comprised Tyler Kruer (back-end API developer), Tomer Zilbershtein (proprietary text classifier developer), Diego Fill (marketing lead), and myself as the full-stack iOS developer. Together, we aimed to empower users to achieve financial freedom with ease and confidence, blending innovation and user-centric design.</p>
-      <p>Penny sunsetted at the end of 2024 due to the rapid advancements in AI and increasing time commitments for all team members. We’re proud of the impact it has had and grateful to our users for being part of Penny’s journey.</p>
-    </div>
-  </div>
-  
-  <div class="container left" data-category="ios-app">
-    <div class="content">
-      <h3>Dec, 2021</h3>
-      <h2>DeFi Dashboard</h2>
-      <h4>First Native DeFi iOS Dashboard</h4>
-      <img src="images/defi_dashboard.webp" alt="DeFi Dashboard Logo">
-      <p>DeFi Dashboard was an iOS application developed using Apple's native SwiftUI and Swift. The app leveraged the <a href="https://cloud.debank.com/" target="_blank">DeBank API</a> to retrieve and display user balances in decentralized crypto assets and protocols, and reached community partner status with <a href="https://www.nftport.xyz/" target="_blank">NFTPort</a> (which ceased operations on 5/26/2024) to enhance its features.</p>
-      <p>The Minimum Viable Product (MVP) was developed in under two weeks. Due to its rapid growth, sustaining the application proved challenging from the high costs associated with API usage.</p>
-    </div>
-  </div>
-  
-  <div class="container right" data-category="ios-app">
-    <div class="content">
-      <h3>Jun, 2020</h3>
-      <h2>BankFolio</h2>
-      <h4>Fintech iOS Mobile Application for Personal Finance Management</h4>
-      <img src="images/bankfolio.webp" alt="BankFolio Logo">
-      <p>BankFolio is an app I bootstrapped using Apple's native SwiftUI and Swift, leveraging the <a href="https://www.plaid.com/" target="_blank">Plaid API</a> to retrieve and display user bank account information and accompanying transactions in one place. The idea came about when I got charged for subscriptions I forgot I had signed up for and wished there was an easier way to spot those transactions quickly. After discovering Plaid's API and doing some research, I found apps offering this service for an average price of $6 a month, which seemed overpriced. The target audience for this type of application is looking to save money rather than spend it. Therefore, I decided to provide this app to users at a near net operating cost based on their number of connected accounts so more people could take advantage of these features and control their hard-earned money.</p>
-      
-      <p>In 2022, BankFolio underwent an unsuccessful acquisition that adversely impacted the company's financial health, primarily due to the integration of costly services, such as <a href="https://www.mx.com/" target="_blank">MX Finance</a>, without corresponding marketing strategies initiation.</p>
-    </div>
-  </div>
-  
-  <div class="container left" data-category="ios-app">
-    <div class="content">
-      <h3>May, 2019</h3>
-      <h2>Mystery Math</h2>
-      <h4>Educational iOS Mobile Application for Kids</h4>
-      <img src="images/mystery_math.webp" alt="Mystery Math Logo">
-      <p>Mystery Math is an iOS application I built with Swift 5 code using Nodes, array algorithm manipulations (a ton of math validations), and the SpriteKit framework on Xcode. The goal of this application is to teach kids addition, subtraction, multiplication, and division with different levels. They can create their own game by picking which operations to test themselves on, and they can track their high score for a continuous record to beat.</p>
-    </div>
-  </div>
-
-  <div class="container right" data-category="ios-app">
-    <div class="content">
-      <h3>Jan, 2019</h3>
-      <h2>Animal Farm: Animal Names</h2>
-      <h4>Educational iOS Mobile Application for Kids</h4>
-      <img src="images/animal_farm.webp" alt="Animal Farm Logo">
-      <p>Animal Farm: Animal Names is an iOS application I built with Swift 4 code using Nodes, array algorithms, and the SpriteKit framework on Xcode. The goal of this application is to teach kids animals, their spelling, and their sounds by playing a simple game against a custom timer.</p>
-    </div>
-  </div>
-</div>
-
-<script>
-function toggleNavbar() {
-  var x = document.getElementById("myNavbar");
-  if (x.className === "navbar") {
-    x.className += " responsive";
-  } else {
-    x.className = "navbar";
-  }
-}
-
-function checkScroll() {
-  var containers = document.querySelectorAll('.container');
-  var windowHeight = window.innerHeight;
-
-  containers.forEach(function(container) {
-    var positionFromTop = container.getBoundingClientRect().top;
-    if (positionFromTop - windowHeight <= 0) {
-      container.classList.add('show');
-    }
-  });
-}
-
-window.addEventListener('scroll', checkScroll);
-window.addEventListener('load', checkScroll);
-</script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var video = document.getElementById('myVideo');
-    video.muted = true;
-    video.play();
-  });
 </script>
 
 </body>

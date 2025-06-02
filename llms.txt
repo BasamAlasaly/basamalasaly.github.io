@@ -1,16 +1,16 @@
 # Basam Alasaly's Personal Website
 
-> Personal portfolio website showcasing projects, research work, and professional background in biomedical informatics, iOS development, and healthcare technology. Features interactive timeline of projects spanning healthcare applications, fintech solutions, and educational tools.
+> Personal portfolio website featuring a modern 6-card grid homepage design showcasing projects, research work, and professional background in biomedical informatics, iOS development, and healthcare technology. Built with glassmorphism design principles and full mobile responsiveness.
 
-This is the personal website of Basam Alasaly, a Research Coordinator at the University of Pennsylvania's AI-4-AI Lab and aspiring physician-scientist. The site showcases a comprehensive portfolio of projects including iOS applications, healthcare research, blockchain implementation, and educational content development.
+This is the personal website of Basam Alasaly, a Research Coordinator at the University of Pennsylvania's AI-4-AI Lab and aspiring physician-scientist. The site features a complete redesign with a full-screen 6-card grid navigation system inspired by Jonathan Patterson's aesthetic.
 
-The website features a dynamic project timeline with filtering capabilities, allowing visitors to explore work across categories including healthcare projects, iOS applications, and educational courses. Notable projects include ShipWiz (sustainable shipping iOS app), Daily Astronomy (NASA APOD integration), LeukApp (clinical decision support), and various fintech applications.
+The homepage showcases a unique navigation approach with a 3x2 grid covering the entire viewport, featuring a special profile card (top-left) with personal information and quote, and individual cards for Projects, Research, About, and Contact sections. The design implements glassmorphism effects with backdrop-blur, hover animations, and a consistent green accent color (#5FF280).
 
 ## Documentation
 
 [README.md](README.md): Basic project information and navigation links to main sections of the website
 
-[index.html.md](index.html.md): Main portfolio page featuring interactive project timeline with detailed descriptions of live, completed, and deprecated projects
+[index.html.md](index.html.md): Updated full-screen 6-card grid homepage with glassmorphism design, profile card, and mobile-responsive navigation
 
 [about.html.md](about.html.md): Professional background, education history, and current research focus at University of Pennsylvania
 
@@ -18,10 +18,43 @@ The website features a dynamic project timeline with filtering capabilities, all
 
 [consulting.html.md](consulting.html.md): Appointment booking page using Setmore integration for consultation scheduling
 
-[contact.html.md](contact.html.md): Contact form using Formspree integration for direct messaging
+[contact.html.md](contact.html.md): Enhanced contact form with improved input visibility and mobile-only contact information section
 
-## Technical Resources
+## Technical Features
 
-[CSS styling patterns](index.html.md): Comprehensive CSS for dark theme, responsive navbar, timeline animations, and mobile-first design
+### Homepage Design (index.html)
+- Full-screen 6-card grid layout (3x2)
+- Glassmorphism effects with backdrop-filter blur
+- Profile card with name, title, quote, and location
+- Hover overlays with large centered icons
+- Mobile-responsive with vertical stacking
+- Mobile-only contact information section
+- Jonathan Patterson-inspired color scheme (#5FF280 green accent, #0a0a0a dark background)
 
-[JavaScript functionality](index.html.md): Project filtering system, responsive navigation toggle, scroll-triggered animations, and video autoplay controls
+### Contact Page Enhancements (contact.html)
+- All form fields made mandatory (name, email, subject, message)
+- Improved input field visibility with black text on semi-transparent white background
+- Formspree integration for message handling
+- Mobile-responsive contact links section
+
+### Research Page (research.html)
+- Color-coded publication filter system
+- Papers: Blue (#40B8FF)
+- Presentations: Red (#FF6B6B) 
+- Abstracts: Purple (#9C88FF)
+- Comprehensive academic work display
+
+### Projects Page (projects.html)
+- Interactive timeline with live, deprecated project sections
+- Project cards with glassmorphism styling
+- Hover effects and smooth animations
+- Commercial applications spanning fintech, education, and sustainable technology
+
+## CSS Design System
+- Inter typography for modern, professional appearance
+- Dark theme with #0a0a0a background
+- Green accent color (#5FF280) throughout
+- Glassmorphism with backdrop-filter blur effects
+- Mobile-first responsive design
+- CSS Grid and Flexbox layouts
+- Smooth transitions and hover animations
