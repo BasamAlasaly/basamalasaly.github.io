@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research - Basam Alasaly</title>
+<meta name="description" content="Academic research, publications, presentations, and scholarly work by Basam Alasaly in biomedical informatics, clinical research, and healthcare technology.">
+<meta name="keywords" content="Basam Alasaly, Research, Publications, AMIA, Biomedical Informatics, Clinical Research, Healthcare Technology, Academic Papers">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.webp">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #33343F;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #111115;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  display: flex;
+  align-items: center;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a img {
+  margin-right: 8px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #ddd;
+  color: #333;
+}
+
+.navbar .icon {
+  display: none;
+}
+
+.navbar a.name-link {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+  .navbar a.icon {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar.responsive {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+  .navbar.responsive .navbar-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar.responsive a {
+    display: block;
+    text-align: left;
+    padding: 14px 16px;
+  }
+  .navbar.responsive a.name-link {
+    text-align: top;
+    padding: 15;
+    margin: 0 auto 10px auto;
+  }
+}
+
+.publications-section {
+  margin-top: 75px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.page-header p {
+  font-size: 1.2em;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-tab {
+  background-color: #444;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.filter-tab:hover, .filter-tab.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.publications-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.publication-card {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid #4CAF50;
+  position: relative;
+}
+
+.publication-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.publication-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.publication-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+  flex: 1;
+  min-width: 250px;
+}
+
+.publication-date {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.publication-details {
+  margin: 15px 0;
+}
+
+.publication-venue {
+  color: #4CAF50;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.publication-institution {
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.publication-location {
+  color: #aaa;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.publication-type {
+  display: inline-block;
+  background-color: #555;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  margin-top: 5px;
+}
+
+.publication-links {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.publication-link {
+  display: inline-flex;
+  align-items: center;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.publication-link:hover {
+  background-color: #45a049;
+  color: white;
+}
+
+.publication-link i {
+  margin-right: 5px;
+}
+
+.acknowledgements-section, .activities-section {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 2px solid #444;
+}
+
+.section-title {
+  font-size: 2em;
+  color: #4CAF50;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.acknowledgement-card, .activity-card {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid #FF9800;
+}
+
+.activity-list {
+  list-style: none;
+  padding: 0;
+}
+
+.activity-item {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid #2196F3;
+}
+
+.activity-links {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.activity-link {
+  color: #2196F3;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #2196F3;
+  border-radius: 15px;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+}
+
+.activity-link:hover {
+  background-color: #2196F3;
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .publications-section {
+    padding: 20px 15px;
+  }
+  
+  .page-header h1 {
+    font-size: 2em;
+  }
+  
+  .publication-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .publication-title {
+    font-size: 1.1em;
+    min-width: auto;
+  }
+  
+  .filter-tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .filter-tab {
+    white-space: nowrap;
+  }
+}
+
+/* Publication type specific colors */
+.type-paper { border-left-color: #4CAF50; }
+.type-presentation { border-left-color: #2196F3; }
+.type-poster { border-left-color: #FF9800; }
+.type-abstract { border-left-color: #9C27B0; }
+.type-capstone { border-left-color: #607D8B; }
+</style>
+</head>
+<body>
+
+<div class="navbar" id="myNavbar">
+  <div class="navbar-links">
+    <a href="index.html"><img src="images/profile_picture.webp" style="width:30px;height:30px;" class="profile-button"><p style ="margin:0px;">Basam Alasaly</p></a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="publications.html" class="active">Research</a>
+    <a href="consulting.html">Consulting</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://basamalasaly.medium.com/" target="_blank">Blog</a>
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="toggleNavbar()">
+    <i class="fas fa-bars"></i>
+  </a>
+</div>
+
+<div class="publications-section">
+  <div class="page-header">
+    <h1>Research</h1>
+    <p>Research exploring how technology can make healthcare better. From AI projects to clinical tools, here's what I've been working on and sharing with the world.</p>
+  </div>
+
+  <div class="filter-tabs">
+    <button class="filter-tab active" onclick="filterPublications('all')">All</button>
+    <button class="filter-tab" onclick="filterPublications('paper')">Papers</button>
+    <button class="filter-tab" onclick="filterPublications('presentation')">Presentations</button>
+    <button class="filter-tab" onclick="filterPublications('abstract')">Abstracts</button>
+    <button class="filter-tab" onclick="filterPublications('2025')">2025</button>
+    <button class="filter-tab" onclick="filterPublications('2024')">2024</button>
+  </div>
+
+  <div class="publications-container">
+    
+    <div class="publication-card type-presentation" data-type="presentation" data-year="2025">
+      <div class="publication-header">
+        <h3 class="publication-title">Capturing the Visitome: Sociotechnical Ethnography in Clinical Visits</h3>
+        <div class="publication-date">May 22, 2025</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">American Medical Informatics Association (AMIA) Clinical Informatics Conference (CIC) 2025</div>
+        <div class="publication-institution">Perelman School of Medicine</div>
+        <div class="publication-location">Anaheim, CA</div>
+        <span class="publication-type">Oral Presentation</span>
+      </div>
+      <div class="publication-links">
+        <a href="https://amia.secure-platform.com/cic/solicitations/102007/sessiongallery/schedule/items/94451" target="_blank" class="publication-link">
+          <i class="fas fa-external-link-alt"></i> AMIA CIC 2025 Session Gallery
+        </a>
+      </div>
+    </div>
+
+    <div class="publication-card type-paper" data-type="paper" data-year="2025">
+      <div class="publication-header">
+        <h3 class="publication-title">The Observer Repository: Advancing Ambulatory Care Innovation Through Video-Based Clinical Ethnography</h3>
+        <div class="publication-date">May 19, 2025</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">medRxiv Preprint</div>
+        <div class="publication-institution">Perelman School of Medicine</div>
+        <span class="publication-type">Paper</span>
+      </div>
+      <div class="publication-links">
+        <a href="https://doi.org/10.1101/2025.05.18.25327837" target="_blank" class="publication-link">
+          <i class="fas fa-file-alt"></i> DOI: 10.1101/2025.05.18.25327837
+        </a>
+      </div>
+    </div>
+
+    <div class="publication-card type-abstract" data-type="abstract" data-year="2025">
+      <div class="publication-header">
+        <h3 class="publication-title">MedVidDeID: Protecting Privacy in Clinical Encounter Videos</h3>
+        <div class="publication-date">March 13, 2025</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">American Medical Informatics Association (AMIA) Annual Symposium 2025</div>
+        <div class="publication-institution">Perelman School of Medicine</div>
+        <div class="publication-location">Pittsburgh, PA</div>
+        <span class="publication-type">Podium Abstract</span>
+      </div>
+      <div class="publication-links">
+        <a href="https://amia.secure-platform.com/summit/solicitations/102005/sessiongallery/94372" target="_blank" class="publication-link">
+          <i class="fas fa-external-link-alt"></i> AMIA 2025 Summit Session Gallery
+        </a>
+      </div>
+    </div>
+
+    <div class="publication-card type-presentation" data-type="presentation" data-year="2025">
+      <div class="publication-header">
+        <h3 class="publication-title">Assessing Modality Bias in Video Question Answering</h3>
+        <div class="publication-date">March 1, 2025</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">Association for the Advancement of Artificial Intelligence 2025 (AAAI25)</div>
+        <div class="publication-institution">Perelman School of Medicine</div>
+        <div class="publication-location">Philadelphia, PA</div>
+        <span class="publication-type">Poster Presentation</span>
+      </div>
+      <div class="publication-links">
+        <a href="https://aaai.org/wp-content/uploads/2025/01/AAAI-25-Poster-Schedule_2025-01-22_Saturday-Only.pdf" target="_blank" class="publication-link">
+          <i class="fas fa-calendar"></i> AAAI-25 Poster Schedule
+        </a>
+      </div>
+    </div>
+
+    <div class="publication-card type-paper" data-type="paper" data-year="2025">
+      <div class="publication-header">
+        <h3 class="publication-title">MedVidDeID: Protecting Privacy in Clinical Encounter Videos</h3>
+        <div class="publication-date">January 21, 2025</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">SSRN Preprint</div>
+        <div class="publication-institution">Perelman School of Medicine</div>
+        <span class="publication-type">Paper</span>
+      </div>
+      <div class="publication-links">
+        <a href="https://dx.doi.org/10.2139/ssrn.5194782" target="_blank" class="publication-link">
+          <i class="fas fa-file-alt"></i> DOI: 0.2139/ssrn.5194782
+        </a>
+      </div>
+    </div>
+
+    <div class="publication-card type-presentation" data-type="presentation" data-year="2024">
+      <div class="publication-header">
+        <h3 class="publication-title">Enabling REDCap as a Tool for Multimodal Video-Labeling Research</h3>
+        <div class="publication-date">September 9, 2024</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">REDCapCon</div>
+        <div class="publication-institution">Perelman School of Medicine</div>
+        <div class="publication-location">St. Petersburg, FL</div>
+        <span class="publication-type">Poster Presentation</span>
+      </div>
+      <div class="publication-links">
+        <a href="http://dx.doi.org/10.13140/RG.2.2.10338.54723" target="_blank" class="publication-link">
+          <i class="fas fa-file-alt"></i> DOI: 10.13140/RG.2.2.10338.54723
+        </a>
+      </div>
+    </div>
+
+    <div class="publication-card type-paper" data-type="paper" data-year="2024">
+      <div class="publication-header">
+        <h3 class="publication-title">Assessing Modality Bias in Video Question Answering Benchmarks with Multimodal Large Language Models</h3>
+        <div class="publication-date">August 22, 2024</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">arXiv</div>
+        <div class="publication-institution">Perelman School of Medicine</div>
+        <span class="publication-type">Paper</span>
+      </div>
+      <div class="publication-links">
+        <a href="https://doi.org/10.48550/arXiv.2408.12763" target="_blank" class="publication-link">
+          <i class="fas fa-file-alt"></i> DOI: 10.48550/arXiv.2408.12763
+        </a>
+      </div>
+    </div>
+
+    <div class="publication-card type-capstone" data-type="capstone" data-year="2021">
+      <div class="publication-header">
+        <h3 class="publication-title">Development of a Novel Blockchain Medical Device Supply Chain Tracking Application</h3>
+        <div class="publication-date">April 1, 2021</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">Capstone Project</div>
+        <div class="publication-institution">Arizona State University</div>
+        <div class="publication-location">Tempe, AZ</div>
+        <span class="publication-type">Capstone Project</span>
+      </div>
+      <div class="publication-links">
+        <a href="http://dx.doi.org/10.13140/RG.2.2.22408.96005" target="_blank" class="publication-link">
+          <i class="fas fa-file-alt"></i> DOI: 10.13140/RG.2.2.22408.96005
+        </a>
+      </div>
+    </div>
+
+    <div class="publication-card type-presentation" data-type="presentation" data-year="2020">
+      <div class="publication-header">
+        <h3 class="publication-title">Leukemia Decision Support Web Application Development Process</h3>
+        <div class="publication-date">April 1, 2020</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">Arizona State University (ASU) Biomedical Informatics Program</div>
+        <div class="publication-institution">Arizona State University</div>
+        <div class="publication-location">Tempe, AZ</div>
+        <span class="publication-type">Poster Presentation</span>
+      </div>
+      <div class="publication-links">
+        <a href="http://dx.doi.org/10.13140/RG.2.2.20237.56803" target="_blank" class="publication-link">
+          <i class="fas fa-file-alt"></i> DOI: 10.13140/RG.2.2.20237.56803
+        </a>
+      </div>
+    </div>
+
+    <div class="publication-card type-presentation" data-type="presentation" data-year="2019">
+      <div class="publication-header">
+        <h3 class="publication-title">Usability Testing for a Leukemia Decision Support Web Application</h3>
+        <div class="publication-date">November 1, 2019</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">American Medical Informatics Association (AMIA) Annual Symposium 2019</div>
+        <div class="publication-institution">Arizona State University</div>
+        <div class="publication-location">Washington, D.C</div>
+        <span class="publication-type">Poster Presentation</span>
+      </div>
+      <div class="publication-links">
+        <a href="http://dx.doi.org/10.13140/RG.2.2.11848.96009" target="_blank" class="publication-link">
+          <i class="fas fa-file-alt"></i> DOI: 10.13140/RG.2.2.11848.96009
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="acknowledgements-section">
+    <h2 class="section-title">Acknowledgements</h2>
+    
+    <div class="acknowledgement-card">
+      <h3 class="publication-title">Medical Devices Digital Threads and their Supply-Chain Management on Blockchain</h3>
+      <div class="publication-details">
+        <div class="publication-venue">Thesis Acknowledgement</div>
+        <div class="publication-institution">Arizona State University</div>
+        <p style="margin-top: 15px; color: #ccc;">Acknowledged for contributions related to industrial supply chain management of medical devices and consortium blockchain discussions.</p>
+      </div>
+      <div class="publication-links">
+        <a href="https://keep.lib.asu.edu/items/161388" target="_blank" class="publication-link">
+          <i class="fas fa-university"></i> Arizona State University KEEP
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="activities-section">
+    <h2 class="section-title">Extra-Curricular Activities</h2>
+    
+    <div class="activity-item">
+      <p>Aided with the development of a COVID-19 Urgent Statistics Dashboard as a volunteer, collaborating with Arizona State University and the University of Arizona for the Arizona Department of Health Services.</p>
+      <div class="activity-links">
+        <a href="http://u.pc.cd/jQF7" target="_blank" class="activity-link">PowerPoint</a>
+        <!-- <a href="https://youtu.be/abBiKZE0eSU?si=9LcB9DW3Wz3-Hw2_" target="_blank" class="activity-link">Video Presentation</a> -->
+      </div>
+    </div>
+
+    <div class="activity-item">
+      <p>Volunteered for technical improvements on the LeukApp project mentioned previously.</p>
+      <div class="activity-links">
+        <a href="https://www.researchgate.net/publication/341998530_Leukemia_Decision_Support_Web_Application_Development_Process" target="_blank" class="activity-link">Poster</a>
+        <!-- <a href="https://youtu.be/mHMl2ZEMQXs" target="_blank" class="activity-link">Video Presentation</a> -->
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleNavbar() {
+  var x = document.getElementById("myNavbar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+
+function filterPublications(type) {
+  const cards = document.querySelectorAll('.publication-card');
+  const tabs = document.querySelectorAll('.filter-tab');
+  
+  // Update active tab
+  tabs.forEach(tab => tab.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  // Filter cards
+  cards.forEach(card => {
+    if (type === 'all') {
+      card.style.display = 'block';
+    } else if (type === '2025' || type === '2024') {
+      card.style.display = card.getAttribute('data-year') === type ? 'block' : 'none';
+    } else {
+      card.style.display = card.getAttribute('data-type') === type ? 'block' : 'none';
+    }
+  });
+}
+</script>
+
+</body>
+</html>

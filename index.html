@@ -311,31 +311,6 @@ a {
   transform: translateY(0); /* Move the container to its original position */
 }
 
-/* Style the dropdown select box */
-#project-filter {
-  background-color: #111115; /* Same color as navbar */
-  color: #f2f2f2; /* Same color as navbar links */
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 10px;
-  font-size: 17px;
-  font-family: 'Roboto', sans-serif;
-  margin: 0 20px 10px 0; /* Space around the dropdown */
-  outline: none;
-}
-
-/* Style the dropdown options */
-#project-filter option {
-  background-color: #33343F;
-  color: #f2f2f2;
-}
-
-/* Position the dropdown on the right side */
-#project-filter {
-  position: absolute;
-  right: 10px; /* Adjust based on desired right margin */
-  z-index: 500;
-}
 
 </style>
 <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
@@ -348,6 +323,7 @@ a {
     <a href="index.html" class="active">Home</a>
     <!-- <a href="books.html">Books</a> -->
     <a href="about.html">About</a>
+    <a href="publications.html">Research</a>
     <a href="consulting.html">Consulting</a>
     <a href="contact.html">Contact</a>
     <a href="https://basamalasaly.medium.com/" target="_blank">Blog</a>
@@ -380,14 +356,6 @@ function toggleNavbar() {
 </div>
 
 <div class="timeline" id="projects">
-    <div style="margin-top: 10px;">
-      <select id="project-filter" onchange="filterProjects()">
-        <option value="all">All Projects</option>
-        <option value="course">Courses</option>
-        <option value="healthcare">Healthcare Projects</option>
-        <option value="ios-app">iOS App Projects</option>
-      </select>
-    </div>
 
   <br />
   <br />
@@ -451,63 +419,6 @@ function toggleNavbar() {
     <div class="line"></div>
   </div>
   
-  <div class="container left" data-category="healthcare">
-    <div class="content">
-      <h3>Sep, 2024</h3>
-      <h2>Enabling REDCap as a Tool for Multimodal Video-Labeling Research</h2>
-      <h4>A Novel Workflow for Crowdsourcing the Labeling of Extensive Multimedia Content</h4>
-      <img src="images/redcap.webp" alt="REDCap Logo" style="height: 100%; width: 100%;">
-      <p>The capabilities of REDCap as a research survey tool are well-established; however, challenges arise when attempting to dynamically embed video segments involving varied video lengths for crowdsourced ground truth labeling. To address these challenges, we integrated REDCap with Amazon AWS and a content delivery network, extending REDCap's functionality for efficient video handling and scalable data collection through Amazon Mechanical Turk. This integration enables REDCap to effectively manage a segmented video library, supporting dynamic streaming and labeling at minimal cost. This methodology extends REDCap’s utility for extensive data analysis and broadens its application across multimedia research settings.</p>
-      
-      <p><a href="https://github.com/kbjohnson-penn/CLIPS" target="_blank">Access the GitHub repository</a></p>
-      
-      <p>This project was presented at REDCapCon 2024 in St. Petersburg, Florida.</p>
-      
-      <p><a href="https://www.researchgate.net/publication/383983503_Enabling_REDCap_as_a_Tool_for_Multimodal_Video-Labeling_Research" target="_blank">Access the poster on ResearchGate</a></p>
-    </div>
-  </div>
-  
-  <div class="container right" data-category="healthcare">
-    <div class="content">
-      <h3>Apr, 2021</h3>
-      <h2>Arizona State University Applied Project</h2>
-      <h4>Leveraging Hyperledger Fabric</h4>
-      <img src="images/hyperledger_fabric.webp" alt="Hyperledger Fabric Logo">
-      <p>The Arizona State University Applied Project was a collaborative blockchain research project for a medical devices company, in which I participated, utilizing Hyperledger Fabric to enhance supply chain management. The project involved detailed research, development, and testing to explore the practical applications of blockchain technology in the industry. We focused on improving device location tracking, managing expiration dates, and streamlining the consignment device reordering process.</p>
-      
-      <p>Through meetings with corporate representatives and healthcare personnel, I gained valuable insights into the industrial supply chain and helped create efficient workflows to identify key data areas. Our efforts culminated in a successful proof of concept, demonstrating the benefits and capabilities of blockchain technology in real-world scenarios.</p>
-      
-      <p><a href="https://www.researchgate.net/publication/352496424_Development_of_a_Novel_Blockchain_Medical_Device_Supply_Chain_Tracking_Application?channel=doi&linkId=60cbff1d299bf1cd71d8f0ca&showFulltext=true" target="_blank">Access the applied project paper on ResearchGate</a></p>
-    </div>
-  </div>
-  
-  <div class="container left" data-category="healthcare">
-    <div class="content">
-      <h3>Apr, 2020</h3>
-      <h2>LeukApp: Decision Support Web App</h2>
-      <h4>React App Usability Testing and Technical Revisions for HonorHealth</h4>
-      <img src="images/leukapp.webp" alt="LeukApp Logo">
-      <p>LeukApp is a clinical decision support web application designed to assist physicians in the risk assessment and treatment of acute myeloid leukemia. My role in this project involved evaluating LeukApp's usability following third-party development and implementing necessary modifications or enhancements to optimize its functionality. This project was a collaborative research effort between ASU and HonorHealth, aimed at aiding physicians' decision-making and resident training.</p>
-      
-      <p>I was a presenter for the LeukApp project at the <a href="https://symposium2019.zerista.com/event/member/602495" target="_blank">AMIA 2019 Annual Symposium</a>, where it was well received during a productive poster presentation session. Through my user testing with oncologists, fellows, and clinical administrators, I gained valuable insights into the importance of usability and UI/UX testing for ensuring end-user satisfaction and effectiveness in healthcare applications. This experience underscored the critical role of user-centered design in the development of clinical decision support tools.</p>
-      <p>
-      Access the posters for:
-      <ul>
-      <li><a href="https://www.researchgate.net/publication/341090902_Usability_Testing_for_a_Leukemia_Decision_Support_Web_Application" target="_blank">Usability Testing</a></li>
-      <li><a href="https://www.researchgate.net/publication/341998530_Leukemia_Decision_Support_Web_Application_Development_Process" target="_blank">Development Process</a></li>
-      </ul>
-      </p>
-      <p>
-      View recorded poster presentations for:
-      <ul>
-      <li><a href="https://youtu.be/mHMl2ZEMQXs" target="_blank">Usability Testing</a></li>
-      <li><a href="https://youtu.be/_EMPb42NwGE" target="_blank">Technical Revisions</a></li>
-      </ul>
-      <a href="https://b3aa2ae6-c00f-4d50-a93e-85209c4164d5.filesusr.com/ugd/a2bf19_bf5e9a5d64d949b393c6a764c822ff74.pdf" target="_blank">View the Sanitized Technical Revisions Document​</a>
-      </p>
-    </div>
-  </div>
-
   <div class="separator" id="deprecated-projects-separator">
     <div class="line"></div>
     <span>Deprecated Projects</span>
@@ -592,54 +503,8 @@ function checkScroll() {
   });
 }
 
-function filterProjects() {
-  var filter = document.getElementById('project-filter').value;
-  var containers = document.querySelectorAll('.container');
-  var separators = document.querySelectorAll('.separator');
-  
-  var leftRightToggle = true;
-
-  // Hide or show containers based on filter
-  containers.forEach(function(container) {
-    if (filter === 'all') {
-      container.style.display = 'block';
-    } else if (container.getAttribute('data-category') === filter) {
-      container.style.display = 'block';
-    } else {
-      container.style.display = 'none';
-    }
-  });
-
-  // Ensure alternating left and right containers
-  containers.forEach(function(container) {
-    if (container.style.display === 'block') {
-      container.classList.remove('left', 'right');
-      if (leftRightToggle) {
-        container.classList.add('left');
-      } else {
-        container.classList.add('right');
-      }
-      leftRightToggle = !leftRightToggle;
-    }
-  });
-
-  // Check and hide or show separators based on container visibility
-  separators.forEach(function(separator) {
-    var nextElement = separator.nextElementSibling;
-    while (nextElement && !nextElement.classList.contains('separator')) {
-      if (nextElement.style.display === 'block') {
-        separator.style.display = 'flex';
-        return;
-      }
-      nextElement = nextElement.nextElementSibling;
-    }
-    separator.style.display = 'none';
-  });
-}
-
 window.addEventListener('scroll', checkScroll);
 window.addEventListener('load', checkScroll);
-window.addEventListener('load', filterProjects);
 </script>
 
 <script>
