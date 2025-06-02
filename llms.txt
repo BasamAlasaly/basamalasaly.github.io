@@ -1,0 +1,27 @@
+# Basam Alasaly's Personal Website
+
+> Personal portfolio website showcasing projects, research work, and professional background in biomedical informatics, iOS development, and healthcare technology. Features interactive timeline of projects spanning healthcare applications, fintech solutions, and educational tools.
+
+This is the personal website of Basam Alasaly, a Research Coordinator at the University of Pennsylvania's AI-4-AI Lab and aspiring physician-scientist. The site showcases a comprehensive portfolio of projects including iOS applications, healthcare research, blockchain implementation, and educational content development.
+
+The website features a dynamic project timeline with filtering capabilities, allowing visitors to explore work across categories including healthcare projects, iOS applications, and educational courses. Notable projects include ShipWiz (sustainable shipping iOS app), Daily Astronomy (NASA APOD integration), LeukApp (clinical decision support), and various fintech applications.
+
+## Documentation
+
+[README.md](README.md): Basic project information and navigation links to main sections of the website
+
+[index.html.md](index.html.md): Main portfolio page featuring interactive project timeline with detailed descriptions of live, completed, and deprecated projects
+
+[about.html.md](about.html.md): Professional background, education history, and current research focus at University of Pennsylvania
+
+[books.html.md](books.html.md): Reading list with book reviews and recommendations for programming and professional development
+
+[consulting.html.md](consulting.html.md): Appointment booking page using Setmore integration for consultation scheduling
+
+[contact.html.md](contact.html.md): Contact form using Formspree integration for direct messaging
+
+## Technical Resources
+
+[CSS styling patterns](index.html.md): Comprehensive CSS for dark theme, responsive navbar, timeline animations, and mobile-first design
+
+[JavaScript functionality](index.html.md): Project filtering system, responsive navigation toggle, scroll-triggered animations, and video autoplay controls
