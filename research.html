@@ -522,12 +522,28 @@ body {
     <button class="filter-tab default-filter active" onclick="filterPublications('all')">All</button>
     <button class="filter-tab paper-filter" onclick="filterPublications('paper')">Papers</button>
     <button class="filter-tab presentation-filter" onclick="filterPublications('presentation')">Presentations</button>
-    <button class="filter-tab abstract-filter" onclick="filterPublications('abstract')">Abstracts</button>
     <button class="filter-tab default-filter" onclick="filterPublications('2025')">2025</button>
     <button class="filter-tab default-filter" onclick="filterPublications('2024')">2024</button>
   </div>
 
   <div class="publications-container">
+    
+    <div class="publication-card type-presentation" data-type="presentation" data-year="2025">
+      <div class="publication-header">
+        <h3 class="publication-title">Real-World Outcomes of BTK Inhibitors in Chronic Lymphocytic Leukemia/Small Lymphocytic Lymphoma Patients with Pre-existing Cardiovascular Comorbidities</h3>
+        <div class="publication-date">September 3, 2025</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">Society of Hematologic Oncology (SOHO) 2025</div>
+        <div class="publication-institution">Sidney Kimmel Medical School</div>
+        <span class="publication-type">Poster Presentation</span>
+      </div>
+      <div class="publication-links">
+        <a href="#" class="publication-link" style="opacity: 0.6; cursor: not-allowed;" onclick="return false;">
+          <i class="fas fa-clock"></i> Link Pending
+        </a>
+      </div>
+    </div>
     
     <div class="publication-card type-presentation" data-type="presentation" data-year="2025">
       <div class="publication-header">
@@ -564,7 +580,8 @@ body {
       </div>
     </div>
 
-    <div class="publication-card type-abstract" data-type="abstract" data-year="2025">
+
+    <div class="publication-card type-presentation" data-type="presentation" data-year="2025">
       <div class="publication-header">
         <h3 class="publication-title">MedVidDeID: Protecting Privacy in Clinical Encounter Videos</h3>
         <div class="publication-date">March 13, 2025</div>
@@ -573,7 +590,7 @@ body {
         <div class="publication-venue">American Medical Informatics Association (AMIA) Annual Symposium 2025</div>
         <div class="publication-institution">Perelman School of Medicine</div>
         <div class="publication-location">Pittsburgh, PA</div>
-        <span class="publication-type">Podium Abstract</span>
+        <span class="publication-type">Oral Presentation</span>
       </div>
       <div class="publication-links">
         <a href="https://amia.secure-platform.com/summit/solicitations/102005/sessiongallery/94372" target="_blank" class="publication-link">
@@ -641,7 +658,7 @@ body {
         <div class="publication-date">August 22, 2024</div>
       </div>
       <div class="publication-details">
-        <div class="publication-venue">arXiv</div>
+        <div class="publication-venue">arXiv Preprint</div>
         <div class="publication-institution">Perelman School of Medicine</div>
         <span class="publication-type">Paper</span>
       </div>
