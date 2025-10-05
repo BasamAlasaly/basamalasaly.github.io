@@ -522,15 +522,34 @@ body {
     <button class="filter-tab default-filter active" onclick="filterPublications('all')">All</button>
     <button class="filter-tab paper-filter" onclick="filterPublications('paper')">Papers</button>
     <button class="filter-tab presentation-filter" onclick="filterPublications('presentation')">Presentations</button>
+    <button class="filter-tab default-filter" onclick="filterPublications('2026')">2026</button>
     <button class="filter-tab default-filter" onclick="filterPublications('2025')">2025</button>
     <button class="filter-tab default-filter" onclick="filterPublications('2024')">2024</button>
   </div>
 
   <div class="publications-container">
     
+    <div class="publication-card type-presentation" data-type="presentation" data-year="2026">
+      <div class="publication-header">
+        <h3 class="publication-title">Speaker Role Identification in Clinical Conversations</h3>
+        <div class="publication-date">January, 2026</div>
+      </div>
+      <div class="publication-details">
+        <div class="publication-venue">Pacific Symposium on Biocomputing (PSB) 2026</div>
+        <div class="publication-institution">Perelman School of Medicine</div>
+        <div class="publication-location">Hawaii, USA</div>
+        <span class="publication-type">Poster Presentation</span>
+      </div>
+      <div class="publication-links">
+        <a href="https://doi.org/10.7490/f1000research.1120293.1" target="_blank" class="publication-link">
+          <i class="fas fa-file-alt"></i> DOI: 10.7490/f1000research.1120293.1
+        </a>
+      </div>
+    </div>
+
     <div class="publication-card type-presentation" data-type="presentation" data-year="2025">
       <div class="publication-header">
-        <h3 class="publication-title">Real-World Outcomes of BTK Inhibitors in Chronic Lymphocytic Leukemia/Small Lymphocytic Lymphoma Patients with Pre-existing Cardiovascular Comorbidities</h3>
+        <h3 class="publication-title">Real-World Outcomes of BTK Inhibitors (BTKi) in Chronic Lymphocytic Leukemia/Small Lymphocytic Lymphoma (CLL/SLL) Patients With Preexisting Cardiovascular Comorbidities</h3>
         <div class="publication-date">September 3, 2025</div>
       </div>
       <div class="publication-details">
@@ -540,8 +559,8 @@ body {
         <span class="publication-type">Poster Presentation</span>
       </div>
       <div class="publication-links">
-        <a href="#" class="publication-link" style="opacity: 0.6; cursor: not-allowed;" onclick="return false;">
-          <i class="fas fa-clock"></i> Link Pending
+        <a href="https://doi.org/10.1016/S2152-2650(25)01869-5" target="_blank" class="publication-link">
+          <i class="fas fa-file-alt"></i> DOI: 10.1016/S2152-2650(25)01869-5
         </a>
       </div>
     </div>
@@ -549,7 +568,7 @@ body {
     <div class="publication-card type-paper" data-type="paper" data-year="2025">
       <div class="publication-header">
         <h3 class="publication-title">MedVidDeID: Protecting privacy in clinical encounter video recordings</h3>
-        <div class="publication-date">August 29, 2025</div>
+        <div class="publication-date">October, 2025</div>
       </div>
       <div class="publication-details">
         <div class="publication-venue">Journal of Biomedical Informatics</div>
@@ -566,7 +585,7 @@ body {
     <div class="publication-card type-paper" data-type="paper" data-year="2025">
       <div class="publication-header">
         <h3 class="publication-title">Speaker Role Identification in Clinical Conversations</h3>
-        <div class="publication-date">August 16, 2025</div>
+        <div class="publication-date">August 14, 2025</div>
       </div>
       <div class="publication-details">
         <div class="publication-venue">medRxiv Preprint</div>
@@ -600,7 +619,7 @@ body {
 
     <div class="publication-card type-paper" data-type="paper" data-year="2025">
       <div class="publication-header">
-        <h3 class="publication-title">The Observer Repository: Advancing Ambulatory Care Innovation Through Video-Based Clinical Ethnography</h3>
+        <h3 class="publication-title">Observer: Creation of a Novel Multimodal Dataset for Outpatient Care Research</h3>
         <div class="publication-date">May 19, 2025</div>
       </div>
       <div class="publication-details">
@@ -819,7 +838,7 @@ function filterPublications(type) {
   cards.forEach(card => {
     if (type === 'all') {
       card.style.display = 'block';
-    } else if (type === '2025' || type === '2024') {
+    } else if (['2026', '2025', '2024'].includes(type)) {
       card.style.display = card.getAttribute('data-year') === type ? 'block' : 'none';
     } else {
       card.style.display = card.getAttribute('data-type') === type ? 'block' : 'none';
