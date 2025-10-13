@@ -193,6 +193,8 @@ body {
   color: #ccc;
   padding: 12px 24px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left-width: 4px;
+  border-left-color: rgba(255, 255, 255, 0.2);
   border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
@@ -211,11 +213,17 @@ body {
   border-color: #40B8FF;
   color: #40B8FF;
 }
+.filter-tab.paper-filter {
+  border-left-color: #40B8FF;
+}
 
 .filter-tab.presentation-filter:hover, .filter-tab.presentation-filter.active {
   background-color: rgba(255, 107, 107, 0.1);
   border-color: #FF6B6B;
   color: #FF6B6B;
+}
+.filter-tab.presentation-filter {
+  border-left-color: #FF6B6B;
 }
 
 .filter-tab.abstract-filter:hover, .filter-tab.abstract-filter.active {
@@ -223,11 +231,17 @@ body {
   border-color: #9C88FF;
   color: #9C88FF;
 }
+.filter-tab.abstract-filter {
+  border-left-color: #9C88FF;
+}
 
 .filter-tab.capstone-filter:hover, .filter-tab.capstone-filter.active {
   background-color: rgba(255, 196, 54, 0.1);
   border-color: #FFC436;
   color: #FFC436;
+}
+.filter-tab.capstone-filter {
+  border-left-color: #FFC436;
 }
 
 /* Default (All, years) keep green */
@@ -235,6 +249,9 @@ body {
   background-color: rgba(95, 242, 128, 0.1);
   border-color: #5FF280;
   color: #5FF280;
+}
+.filter-tab.default-filter {
+  border-left-color: #5FF280;
 }
 
 .publications-container {
@@ -519,12 +536,12 @@ body {
   </div>
 
   <div class="filter-tabs">
-    <button class="filter-tab default-filter active" onclick="filterPublications('all')">All</button>
-    <button class="filter-tab paper-filter" onclick="filterPublications('paper')">Papers</button>
-    <button class="filter-tab presentation-filter" onclick="filterPublications('presentation')">Presentations</button>
-    <button class="filter-tab default-filter" onclick="filterPublications('2026')">2026</button>
-    <button class="filter-tab default-filter" onclick="filterPublications('2025')">2025</button>
-    <button class="filter-tab default-filter" onclick="filterPublications('2024')">2024</button>
+    <button class="filter-tab default-filter active" data-filter="all" data-label="All" onclick="filterPublications('all', this)">All</button>
+    <button class="filter-tab paper-filter" data-filter="paper" data-label="Papers" onclick="filterPublications('paper', this)">Papers</button>
+    <button class="filter-tab presentation-filter" data-filter="presentation" data-label="Presentations" onclick="filterPublications('presentation', this)">Presentations</button>
+    <button class="filter-tab default-filter" data-filter="2026" data-label="2026" onclick="filterPublications('2026', this)">2026</button>
+    <button class="filter-tab default-filter" data-filter="2025" data-label="2025" onclick="filterPublications('2025', this)">2025</button>
+    <button class="filter-tab default-filter" data-filter="2024" data-label="2024" onclick="filterPublications('2024', this)">2024</button>
   </div>
 
   <div class="publications-container">
@@ -826,25 +843,56 @@ window.addEventListener('scroll', function() {
   }
 });
 
-function filterPublications(type) {
+function filterPublications(type, tabElement) {
   const cards = document.querySelectorAll('.publication-card');
   const tabs = document.querySelectorAll('.filter-tab');
   
   // Update active tab
   tabs.forEach(tab => tab.classList.remove('active'));
-  event.target.classList.add('active');
+  if (tabElement) {
+    tabElement.classList.add('active');
+  }
   
   // Filter cards
   cards.forEach(card => {
     if (type === 'all') {
       card.style.display = 'block';
-    } else if (['2026', '2025', '2024'].includes(type)) {
-      card.style.display = card.getAttribute('data-year') === type ? 'block' : 'none';
     } else {
-      card.style.display = card.getAttribute('data-type') === type ? 'block' : 'none';
+      const matchesType = card.dataset.type === type;
+      const matchesYear = card.dataset.year === type;
+      card.style.display = matchesType || matchesYear ? 'block' : 'none';
     }
   });
 }
+
+function updateFilterCounts() {
+  const cards = document.querySelectorAll('.publication-card');
+  const counts = {};
+
+  cards.forEach(card => {
+    const cardType = card.dataset.type;
+    const cardYear = card.dataset.year;
+
+    counts.all = (counts.all || 0) + 1;
+
+    if (cardType) {
+      counts[cardType] = (counts[cardType] || 0) + 1;
+    }
+
+    if (cardYear) {
+      counts[cardYear] = (counts[cardYear] || 0) + 1;
+    }
+  });
+
+  document.querySelectorAll('.filter-tab').forEach(button => {
+    const filterKey = button.dataset.filter;
+    const label = button.dataset.label || button.textContent.trim();
+    const count = counts[filterKey] || 0;
+    button.textContent = `${label} (${count})`;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', updateFilterCounts);
 </script>
 
 </body>
