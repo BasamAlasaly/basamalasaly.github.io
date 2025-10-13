@@ -902,7 +902,7 @@ function normalizeDateString(dateText) {
   if (Number.isNaN(parsed.getTime())) {
     return null;
   }
-  return parsed.toISOString().split('T')[0];
+  return parsed.toISOString();
 }
 
 function injectStructuredData() {
@@ -934,13 +934,17 @@ function injectStructuredData() {
     const item = {
       '@type': schemaType,
       name: title,
+      headline: title,
       url: linkEl ? linkEl.href : window.location.href,
       inLanguage: 'en',
       author: {
         '@type': 'Person',
-        name: 'Basam Alasaly'
+        name: 'Basam Alasaly',
+        url: 'https://basamalasaly.com/'
       }
     };
+
+    item.image = 'https://basamalasaly.com/images/profile_picture.webp';
 
     if (keywords.length) {
       item.keywords = keywords.join(', ');
