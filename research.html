@@ -843,6 +843,13 @@ window.addEventListener('scroll', function() {
   }
 });
 
+function matchesFilter(card, filterKey) {
+  if (filterKey === 'all') {
+    return true;
+  }
+  return card.dataset.type === filterKey || card.dataset.year === filterKey;
+}
+
 function filterPublications(type, tabElement) {
   const cards = document.querySelectorAll('.publication-card');
   const tabs = document.querySelectorAll('.filter-tab');
@@ -855,13 +862,7 @@ function filterPublications(type, tabElement) {
   
   // Filter cards
   cards.forEach(card => {
-    if (type === 'all') {
-      card.style.display = 'block';
-    } else {
-      const matchesType = card.dataset.type === type;
-      const matchesYear = card.dataset.year === type;
-      card.style.display = matchesType || matchesYear ? 'block' : 'none';
-    }
+    card.style.display = matchesFilter(card, type) ? 'block' : 'none';
   });
 }
 
@@ -892,7 +893,106 @@ function updateFilterCounts() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', updateFilterCounts);
+function normalizeDateString(dateText) {
+  if (!dateText) {
+    return null;
+  }
+  const cleaned = dateText.replace(/(\d{1,2})(st|nd|rd|th)/gi, '$1');
+  const parsed = new Date(cleaned);
+  if (Number.isNaN(parsed.getTime())) {
+    return null;
+  }
+  return parsed.toISOString().split('T')[0];
+}
+
+function injectStructuredData() {
+  if (document.head.querySelector('script[data-generated=\"research-structured-data\"]')) {
+    return;
+  }
+
+  const cards = document.querySelectorAll('.publication-card');
+  if (!cards.length) {
+    return;
+  }
+
+  const structuredItems = Array.from(cards).map((card, index) => {
+    const cardType = card.dataset.type;
+    const schemaType = cardType === 'paper' ? 'ScholarlyArticle' : 'CreativeWork';
+    const title = card.querySelector('.publication-title')?.textContent.trim();
+    if (!title) {
+      return null;
+    }
+
+    const dateText = card.querySelector('.publication-date')?.textContent.trim();
+    const datePublished = normalizeDateString(dateText);
+    const venue = card.querySelector('.publication-venue')?.textContent.trim();
+    const linkEl = card.querySelector('.publication-links a');
+    const description = card.querySelector('.publication-details')?.textContent.replace(/\s+/g, ' ').trim();
+
+    const keywords = [cardType, card.dataset.year].filter(Boolean);
+
+    const item = {
+      '@type': schemaType,
+      name: title,
+      url: linkEl ? linkEl.href : window.location.href,
+      inLanguage: 'en',
+      author: {
+        '@type': 'Person',
+        name: 'Basam Alasaly'
+      }
+    };
+
+    if (keywords.length) {
+      item.keywords = keywords.join(', ');
+    }
+
+    if (datePublished) {
+      item.datePublished = datePublished;
+    }
+
+    if (venue) {
+      item.publisher = {
+        '@type': 'Organization',
+        name: venue
+      };
+    }
+
+    if (description) {
+      item.description = description;
+    }
+
+    if (linkEl?.textContent) {
+      item.sameAs = linkEl.href;
+    }
+
+    return {
+      '@type': 'ListItem',
+      position: index + 1,
+      item
+    };
+  }).filter(Boolean);
+
+  if (!structuredItems.length) {
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.setAttribute('data-generated', 'research-structured-data');
+  script.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Research outputs by Basam Alasaly',
+    itemListElement: structuredItems
+  }, null, 2);
+
+  document.head.appendChild(script);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateFilterCounts();
+  injectStructuredData();
+});
 </script>
 
 </body>
