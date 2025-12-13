@@ -542,6 +542,8 @@ body {
     <button class="filter-tab default-filter" data-filter="2026" data-label="2026" onclick="filterPublications('2026', this)">2026</button>
     <button class="filter-tab default-filter" data-filter="2025" data-label="2025" onclick="filterPublications('2025', this)">2025</button>
     <button class="filter-tab default-filter" data-filter="2024" data-label="2024" onclick="filterPublications('2024', this)">2024</button>
+    <button class="filter-tab default-filter" data-filter="2021" data-label="2021" onclick="filterPublications('2021', this)">2021</button>
+    <button class="filter-tab default-filter" data-filter="2020" data-label="2020" onclick="filterPublications('2020', this)">2020</button>
   </div>
 
   <div class="publications-container">
@@ -782,7 +784,7 @@ body {
   <div class="acknowledgements-section">
     <h2 class="section-title">Acknowledgements</h2>
 
-    <div class="acknowledgement-card">
+    <div class="acknowledgement-card" data-year="2025">
       <div class="publication-header">
         <h3 class="publication-title">Artificial Intelligence in Outpatient Primary Care: A Scoping Review on Applications, Challenges, and Future Directions</h3>
         <div class="publication-date">2025</div>
@@ -798,7 +800,7 @@ body {
       </div>
     </div>
     
-    <div class="acknowledgement-card">
+    <div class="acknowledgement-card" data-year="2021">
       <div class="publication-header">
         <h3 class="publication-title">Medical Devices Digital Threads and their Supply-Chain Management on Blockchain</h3>
         <div class="publication-date">2021</div>
@@ -819,16 +821,28 @@ body {
   <div class="activities-section">
     <h2 class="section-title">Extra-Curricular Activities</h2>
     
-    <div class="activity-item">
-      <p>Aided with the development of a COVID-19 Urgent Statistics Dashboard as a volunteer, collaborating with Arizona State University and the University of Arizona for the Arizona Department of Health Services.</p>
+    <div class="activity-item" data-year="2020">
+      <div class="publication-header">
+        <h3 class="publication-title">COVID-19 Urgent Statistics Dashboard</h3>
+        <div class="publication-date">2020</div>
+      </div>
+      <div class="publication-details">
+        <p>Aided with the development of a COVID-19 Urgent Statistics Dashboard as a volunteer, collaborating with Arizona State University and the University of Arizona for the Arizona Department of Health Services.</p>
+      </div>
       <div class="activity-links">
         <!-- <a href="http://u.pc.cd/jQF7" target="_blank" class="activity-link">PowerPoint</a> -->
         <a href="https://web.archive.org/web/20200501170411/https://www.azdhs.gov/documents/preparedness/epidemiology-disease-control/infectious-disease-epidemiology/novel-coronavirus/directors-blog-urls/asu-uofa-synopsis-of-projections-workgroup.pdf" target="_blank" class="activity-link">PowerPoint</a>
       </div>
     </div>
 
-    <div class="activity-item">
-      <p>Volunteered for technical improvements on the LeukApp project mentioned previously.</p>
+    <div class="activity-item" data-year="2020">
+      <div class="publication-header">
+        <h3 class="publication-title">LeukApp Technical Improvements</h3>
+        <div class="publication-date">2020</div>
+      </div>
+      <div class="publication-details">
+        <p>Volunteered for technical improvements on the LeukApp project mentioned previously.</p>
+      </div>
       <div class="activity-links">
         <a href="https://www.researchgate.net/publication/341998530_Leukemia_Decision_Support_Web_Application_Development_Process" target="_blank" class="activity-link">Poster</a>
       </div>
@@ -870,7 +884,7 @@ function matchesFilter(card, filterKey) {
 }
 
 function filterPublications(type, tabElement) {
-  const cards = document.querySelectorAll('.publication-card');
+  const cards = document.querySelectorAll('.publication-card, .acknowledgement-card, .activity-item');
   const tabs = document.querySelectorAll('.filter-tab');
   
   // Update active tab
@@ -886,7 +900,7 @@ function filterPublications(type, tabElement) {
 }
 
 function updateFilterCounts() {
-  const cards = document.querySelectorAll('.publication-card');
+  const cards = document.querySelectorAll('.publication-card, .acknowledgement-card, .activity-item');
   const counts = {};
 
   cards.forEach(card => {

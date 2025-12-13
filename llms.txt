@@ -14,7 +14,7 @@ The homepage showcases a unique navigation approach with a 3x2 grid covering the
 
 [about.html.md](about.html.md): Professional background, education history, and current research focus at University of Pennsylvania
 
-[books.html.md](books.html.md): Reading list with book reviews and recommendations for programming and professional development
+[research.html.md](research.html.md): Academic research, publications, acknowledgements, and extra-curricular activities with filtering capabilities
 
 [consulting.html.md](consulting.html.md): Appointment booking page using Setmore integration for consultation scheduling
 
@@ -42,7 +42,8 @@ The homepage showcases a unique navigation approach with a 3x2 grid covering the
 - Papers: Blue (#40B8FF)
 - Presentations: Red (#FF6B6B) 
 - Abstracts: Purple (#9C88FF)
-- Comprehensive academic work display
+- Comprehensive academic work display including acknowledgements and extra-curricular activities
+- Unified year filtering across all content types
 
 ### Projects Page (projects.html)
 - Interactive timeline with live, deprecated project sections
