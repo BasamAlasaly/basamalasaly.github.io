@@ -728,7 +728,7 @@ body {
     <div class="publication-card type-capstone" data-type="capstone" data-year="2021">
       <div class="publication-header">
         <h3 class="publication-title">Development of a Novel Blockchain Medical Device Supply Chain Tracking Application</h3>
-        <div class="publication-date">April 1, 2021</div>
+        <div class="publication-date">April 8, 2021</div>
       </div>
       <div class="publication-details">
         <div class="publication-venue">Capstone Project</div>
@@ -746,7 +746,7 @@ body {
     <div class="publication-card type-presentation" data-type="presentation" data-year="2020">
       <div class="publication-header">
         <h3 class="publication-title">Leukemia Decision Support Web Application Development Process</h3>
-        <div class="publication-date">April 1, 2020</div>
+        <div class="publication-date">April, 2020</div>
       </div>
       <div class="publication-details">
         <div class="publication-venue">Arizona State University (ASU) Biomedical Informatics Program</div>
@@ -764,7 +764,7 @@ body {
     <div class="publication-card type-presentation" data-type="presentation" data-year="2019">
       <div class="publication-header">
         <h3 class="publication-title">Usability Testing for a Leukemia Decision Support Web Application</h3>
-        <div class="publication-date">November 1, 2019</div>
+        <div class="publication-date">November 19, 2019</div>
       </div>
       <div class="publication-details">
         <div class="publication-venue">American Medical Informatics Association (AMIA) Annual Symposium 2019</div>
@@ -787,7 +787,7 @@ body {
     <div class="acknowledgement-card" data-year="2025">
       <div class="publication-header">
         <h3 class="publication-title">Artificial Intelligence in Outpatient Primary Care: A Scoping Review on Applications, Challenges, and Future Directions</h3>
-        <div class="publication-date">2025</div>
+        <div class="publication-date">October 28, 2025</div>
       </div>
       <div class="publication-details">
         <div class="publication-venue">Journal of General Internal Medicine</div>
@@ -803,7 +803,7 @@ body {
     <div class="acknowledgement-card" data-year="2021">
       <div class="publication-header">
         <h3 class="publication-title">Medical Devices Digital Threads and their Supply-Chain Management on Blockchain</h3>
-        <div class="publication-date">2021</div>
+        <div class="publication-date">April, 2021</div>
       </div>
       <div class="publication-details">
         <div class="publication-venue">Thesis Acknowledgement</div>
@@ -824,7 +824,7 @@ body {
     <div class="activity-item" data-year="2020">
       <div class="publication-header">
         <h3 class="publication-title">COVID-19 Urgent Statistics Dashboard</h3>
-        <div class="publication-date">2020</div>
+        <div class="publication-date">April 8, 2020</div>
       </div>
       <div class="publication-details">
         <p>Aided with the development of a COVID-19 Urgent Statistics Dashboard as a volunteer, collaborating with Arizona State University and the University of Arizona for the Arizona Department of Health Services.</p>
@@ -838,7 +838,7 @@ body {
     <div class="activity-item" data-year="2020">
       <div class="publication-header">
         <h3 class="publication-title">LeukApp Technical Improvements</h3>
-        <div class="publication-date">2020</div>
+        <div class="publication-date">April, 2020</div>
       </div>
       <div class="publication-details">
         <p>Volunteered for technical improvements on the LeukApp project mentioned previously.</p>
@@ -897,6 +897,9 @@ function filterPublications(type, tabElement) {
   cards.forEach(card => {
     card.style.display = matchesFilter(card, type) ? 'block' : 'none';
   });
+
+  // Hide entire sections if they have no visible items
+  updateSectionVisibility();
 }
 
 function updateFilterCounts() {
@@ -1029,7 +1032,27 @@ function injectStructuredData() {
 document.addEventListener('DOMContentLoaded', () => {
   updateFilterCounts();
   injectStructuredData();
+  // Ensure section visibility is correct on initial load
+  updateSectionVisibility();
 });
+
+// Toggle visibility of sections based on whether they contain any visible items
+function updateSectionVisibility() {
+  const sections = [
+    { el: document.querySelector('.acknowledgements-section'), itemSelector: '.acknowledgement-card' },
+    { el: document.querySelector('.activities-section'), itemSelector: '.activity-item' }
+  ];
+
+  sections.forEach(({ el, itemSelector }) => {
+    if (!el) return;
+    const items = el.querySelectorAll(itemSelector);
+    let visibleCount = 0;
+    items.forEach(item => {
+      if (item.style.display !== 'none') visibleCount += 1;
+    });
+    el.style.display = visibleCount > 0 ? '' : 'none';
+  });
+}
 </script>
 
 </body>
