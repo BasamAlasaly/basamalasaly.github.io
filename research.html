@@ -180,78 +180,293 @@ body {
   }
 }
 
-.filter-tabs {
+.filter-toolbar {
   display: flex;
+  align-items: center;
   justify-content: center;
   margin-bottom: 30px;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 24px;
+  min-width: 0;
+}
+
+.filter-tabs {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  gap: 24px;
+  min-width: 0;
 }
 
 .filter-tab {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #ccc;
-  padding: 12px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-left-width: 4px;
-  border-left-color: rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  --filter-dot-color: #C9D1D9;
+  --filter-dot-ring: rgba(201, 209, 217, 0.14);
+  background: transparent;
+  color: #a9a9a9;
+  padding: 8px 0 10px;
+  border: 0;
   cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
+  font-size: 15px;
+  transition: color 0.2s ease;
   font-family: 'Inter', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
-.filter-tab:hover, .filter-tab.active {
+.filter-tab[data-filter-type="paper"] {
+  --filter-dot-color: #7CB9E8;
+  --filter-dot-ring: rgba(124, 185, 232, 0.16);
+}
+
+.filter-tab[data-filter-type="presentation"] {
+  --filter-dot-color: #F28B82;
+  --filter-dot-ring: rgba(242, 139, 130, 0.16);
+}
+
+.filter-tab[data-filter-type="capstone"] {
+  --filter-dot-color: #F4C95D;
+  --filter-dot-ring: rgba(244, 201, 93, 0.16);
+}
+
+.filter-tab[data-filter-type="acknowledgement"] {
+  --filter-dot-color: #E7A66B;
+  --filter-dot-ring: rgba(231, 166, 107, 0.16);
+}
+
+.filter-tab[data-filter-type="activity"] {
+  --filter-dot-color: #67D6C4;
+  --filter-dot-ring: rgba(103, 214, 196, 0.16);
+}
+
+.filter-tab-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: var(--filter-dot-color);
+  opacity: 0.72;
+  transform: translateY(1px);
+}
+
+.filter-tab.active .filter-tab-dot {
+  opacity: 1;
+  box-shadow: 0 0 0 3px var(--filter-dot-ring);
+}
+
+.filter-tab::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  background: #D0D7DE;
+  opacity: 0;
+  transform: scaleX(0.72);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.filter-tab:hover,
+.filter-tab.active {
+  color: #f2f2f2;
+}
+
+.filter-tab.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.filter-tab-count {
+  color: #777;
+  font-size: 0.88em;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.filter-tab.active .filter-tab-count {
+  color: #aaa;
+}
+
+.filter-tab:focus-visible,
+.year-filter-button:focus-visible,
+.year-option:focus-visible {
+  outline: 2px solid rgba(95, 242, 128, 0.72);
+  outline-offset: 3px;
+}
+
+.year-filter-button:focus-visible,
+.year-option:focus-visible {
+  outline-color: rgba(210, 215, 225, 0.82);
+}
+
+.year-filter {
+  position: relative;
+  flex: 0 0 155px;
+  min-width: 155px;
+}
+
+.year-filter-button {
+  width: 100%;
+  min-height: 43px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-start;
+  padding: 8px 12px 8px 14px;
+  border: 1px solid rgba(210, 215, 225, 0.24);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.year-filter-button:hover,
+.year-filter.open .year-filter-button {
+  background: rgba(210, 215, 225, 0.09);
+  border-color: rgba(240, 246, 252, 0.45);
   transform: translateY(-2px);
 }
 
-/* Category-specific filter button colors */
-.filter-tab.paper-filter:hover, .filter-tab.paper-filter.active {
-  background-color: rgba(64, 184, 255, 0.1);
-  border-color: #40B8FF;
-  color: #40B8FF;
-}
-.filter-tab.paper-filter {
-  border-left-color: #40B8FF;
+.year-filter-button i {
+  color: #D0D7DE;
+  font-size: 0.85em;
+  transition: transform 0.25s ease;
 }
 
-.filter-tab.presentation-filter:hover, .filter-tab.presentation-filter.active {
-  background-color: rgba(255, 107, 107, 0.1);
-  border-color: #FF6B6B;
-  color: #FF6B6B;
-}
-.filter-tab.presentation-filter {
-  border-left-color: #FF6B6B;
+.year-filter.open .year-filter-button i {
+  transform: rotate(180deg);
 }
 
-.filter-tab.abstract-filter:hover, .filter-tab.abstract-filter.active {
-  background-color: rgba(156, 136, 255, 0.1);
-  border-color: #9C88FF;
-  color: #9C88FF;
-}
-.filter-tab.abstract-filter {
-  border-left-color: #9C88FF;
-}
-
-.filter-tab.capstone-filter:hover, .filter-tab.capstone-filter.active {
-  background-color: rgba(255, 196, 54, 0.1);
-  border-color: #FFC436;
-  color: #FFC436;
-}
-.filter-tab.capstone-filter {
-  border-left-color: #FFC436;
+.year-filter-copy {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: baseline;
+  line-height: 1;
+  min-width: 0;
 }
 
-/* Default (All, years) keep green */
-.filter-tab.default-filter:hover, .filter-tab.default-filter.active {
-  background-color: rgba(95, 242, 128, 0.1);
-  border-color: #5FF280;
-  color: #5FF280;
+.year-filter-label {
+  display: none;
 }
-.filter-tab.default-filter {
-  border-left-color: #5FF280;
+
+.year-filter-value {
+  color: #fff;
+  font-size: 0.94em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.year-filter-count {
+  min-width: 27px;
+  height: 25px;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  background: rgba(210, 215, 225, 0.13);
+  color: #F0F3F6;
+  font-size: 0.8em;
+  font-weight: 700;
+}
+
+.year-filter-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  width: 100%;
+  min-width: 210px;
+  padding: 8px;
+  border: 1px solid rgba(210, 215, 225, 0.24);
+  border-radius: 18px;
+  background: rgba(14, 14, 14, 0.96);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+  z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+.year-filter.open .year-filter-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.year-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #ddd;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.96em;
+  text-align: left;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.year-option:hover,
+.year-option:focus-visible {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+.year-option[aria-selected="true"] {
+  background: rgba(210, 215, 225, 0.12);
+  color: #F0F3F6;
+}
+
+.year-option:disabled {
+  color: #666;
+  cursor: default;
+}
+
+.year-option:disabled:hover {
+  background: transparent;
+}
+
+.year-option-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.year-option-main i {
+  width: 14px;
+  color: #D0D7DE;
+  font-size: 0.8em;
+}
+
+.year-option-count {
+  min-width: 28px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #aaa;
+  font-size: 0.82em;
+  font-weight: 700;
+}
+
+.year-option[aria-selected="true"] .year-option-count {
+  background: rgba(210, 215, 225, 0.16);
+  color: #F0F3F6;
 }
 
 .publications-container {
@@ -267,7 +482,6 @@ body {
   border-radius: 15px;
   padding: 25px;
   transition: all 0.4s ease;
-  border-left: 4px solid #5FF280;
   position: relative;
   overflow: hidden;
 }
@@ -290,8 +504,23 @@ body {
 .publication-card:hover {
   transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(95, 242, 128, 0.3);
+  border-color: rgba(255, 255, 255, 0.18);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.type-paper {
+  --publication-type-color: #7CB9E8;
+  --publication-type-ring: rgba(124, 185, 232, 0.16);
+}
+
+.type-presentation {
+  --publication-type-color: #F28B82;
+  --publication-type-ring: rgba(242, 139, 130, 0.16);
+}
+
+.type-capstone {
+  --publication-type-color: #F4C95D;
+  --publication-type-ring: rgba(244, 201, 93, 0.16);
 }
 
 .publication-header {
@@ -344,14 +573,26 @@ body {
 }
 
 .publication-type {
-  display: inline-block;
-  background-color: rgba(95, 242, 128, 0.1);
-  color: #5FF280;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.8em;
-  margin-top: 5px;
-  border: 1px solid rgba(95, 242, 128, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #aaa;
+  padding: 0;
+  font-size: 0.76em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+.publication-type::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: var(--publication-type-color, #C9D1D9);
+  box-shadow: 0 0 0 3px var(--publication-type-ring, rgba(201, 209, 217, 0.14));
 }
 
 .publication-links {
@@ -417,15 +658,16 @@ body {
 
 .acknowledgement-card, .activity-item {
   background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
-  border-left: 4px solid #5FF280;
   transition: all 0.3s ease;
 }
 
 .acknowledgement-card:hover, .activity-item:hover {
   background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
   transform: translateY(-2px);
 }
 
@@ -471,33 +713,41 @@ body {
     min-width: auto;
   }
   
+  .filter-toolbar {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+
   .filter-tabs {
+    flex-wrap: nowrap;
     justify-content: flex-start;
+    margin: 0 -15px;
     overflow-x: auto;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding: 10px 15px;
+    scrollbar-width: none;
+  }
+
+  .filter-tabs::-webkit-scrollbar {
+    display: none;
   }
   
   .filter-tab {
     white-space: nowrap;
   }
-}
 
-/* Publication type specific colors */
-.type-paper {
-  border-left-color: #40B8FF;
-}
+  .year-filter {
+    flex: 0 0 auto;
+    min-width: 0;
+    width: 100%;
+  }
 
-.type-presentation, .type-poster {
-  border-left-color: #FF6B6B;
-}
-
-.type-abstract {
-  border-left-color: #9C88FF;
-}
-
-.type-capstone {
-  border-left-color: #FFC436;
+  .year-filter-menu {
+    left: 0;
+    right: 0;
+    min-width: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -554,16 +804,26 @@ body {
     <p>From AI projects to clinical tools, here's what I've been working on</p>
   </div>
 
-  <div class="filter-tabs">
-    <button class="filter-tab default-filter active" data-filter="all" data-label="All" onclick="filterPublications('all', this)">All</button>
-    <button class="filter-tab paper-filter" data-filter="paper" data-label="Papers" onclick="filterPublications('paper', this)">Papers</button>
-    <button class="filter-tab presentation-filter" data-filter="presentation" data-label="Presentations" onclick="filterPublications('presentation', this)">Presentations</button>
-    <button class="filter-tab default-filter" data-filter="2026" data-label="2026" onclick="filterPublications('2026', this)">2026</button>
-    <button class="filter-tab default-filter" data-filter="2025" data-label="2025" onclick="filterPublications('2025', this)">2025</button>
-    <button class="filter-tab default-filter" data-filter="2024" data-label="2024" onclick="filterPublications('2024', this)">2024</button>
-    <button class="filter-tab default-filter" data-filter="2021" data-label="2021" onclick="filterPublications('2021', this)">2021</button>
-    <button class="filter-tab default-filter" data-filter="2020" data-label="2020" onclick="filterPublications('2020', this)">2020</button>
-    <button class="filter-tab default-filter" data-filter="2019" data-label="2019" onclick="filterPublications('2019', this)">2019</button>
+  <div class="filter-toolbar" aria-label="Research filters">
+    <div class="filter-tabs" role="group" aria-label="Filter by content type">
+      <button class="filter-tab default-filter active" type="button" data-filter-type="all" data-label="All">All</button>
+      <button class="filter-tab paper-filter" type="button" data-filter-type="paper" data-label="Publications">Publications</button>
+      <button class="filter-tab presentation-filter" type="button" data-filter-type="presentation" data-label="Presentations">Presentations</button>
+      <button class="filter-tab capstone-filter" type="button" data-filter-type="capstone" data-label="Capstones">Capstones</button>
+      <button class="filter-tab acknowledgement-filter" type="button" data-filter-type="acknowledgement" data-label="Acknowledgements">Acknowledgements</button>
+      <button class="filter-tab activity-filter" type="button" data-filter-type="activity" data-label="Activities">Activities</button>
+    </div>
+    <div class="year-filter" data-year-filter>
+      <button class="year-filter-button" type="button" id="yearFilterButton" aria-haspopup="listbox" aria-expanded="false" aria-controls="yearFilterMenu">
+        <span class="year-filter-copy">
+          <span class="year-filter-label">Year</span>
+          <span class="year-filter-value" id="yearFilterValue">All years</span>
+        </span>
+        <span class="year-filter-count" id="yearFilterCount">0</span>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </button>
+      <div class="year-filter-menu" id="yearFilterMenu" role="listbox" aria-label="Filter by year"></div>
+    </div>
   </div>
 
   <div class="publications-container">
@@ -591,7 +851,7 @@ body {
       <div class="publication-details">
         <div class="publication-venue">Journal of the American Medical Informatics Association</div>
         <div class="publication-institution">University of Pennsylvania</div>
-        <span class="publication-type">Paper</span>
+        <span class="publication-type">Publication</span>
       </div>
       <div class="publication-links">
         <a href="https://doi.org/10.1093/jamia/ocaf182" target="_blank" class="publication-link">
@@ -608,7 +868,7 @@ body {
       <div class="publication-details">
         <div class="publication-venue">Proceedings of the Pacific Symposium on Biocomputing (PSB) 2026</div>
         <div class="publication-institution">University of Pennsylvania</div>
-        <span class="publication-type">Paper</span>
+        <span class="publication-type">Publication</span>
       </div>
       <div class="publication-links">
         <a href="https://doi.org/10.1142/9789819824755_0011" target="_blank" class="publication-link">
@@ -625,7 +885,7 @@ body {
       <div class="publication-details">
         <div class="publication-venue">Journal of Biomedical Informatics</div>
         <div class="publication-institution">University of Pennsylvania</div>
-        <span class="publication-type">Paper</span>
+        <span class="publication-type">Publication</span>
       </div>
       <div class="publication-links">
         <a href="https://doi.org/10.1016/j.jbi.2025.104901" target="_blank" class="publication-link">
@@ -697,7 +957,7 @@ body {
         <div class="publication-venue">Proceedings of the AAAI Conference on Artificial Intelligence</div>
         <div class="publication-institution">University of Pennsylvania</div>
         <div class="publication-location">Philadelphia, PA</div>
-        <span class="publication-type">Paper</span>
+        <span class="publication-type">Publication</span>
       </div>
       <div class="publication-links">
         <a href="https://doi.org/10.1609/aaai.v39i19.34183" target="_blank" class="publication-link">
@@ -895,61 +1155,293 @@ window.addEventListener('scroll', function() {
   }
 });
 
+const filterState = {
+  type: 'all',
+  year: 'all'
+};
+
+function getFilterCards() {
+  return Array.from(document.querySelectorAll('.publication-card, .acknowledgement-card, .activity-item'));
+}
+
+function getCardType(card) {
+  if (card.classList.contains('acknowledgement-card')) {
+    return 'acknowledgement';
+  }
+  if (card.classList.contains('activity-item')) {
+    return 'activity';
+  }
+  return card.dataset.type || '';
+}
+
+function matchesType(card, type = filterState.type) {
+  return type === 'all' || getCardType(card) === type;
+}
+
+function matchesYear(card, year = filterState.year) {
+  return year === 'all' || card.dataset.year === year;
+}
+
+function matchesActiveFilters(card) {
+  return matchesType(card) && matchesYear(card);
+}
+
 function matchesFilter(card, filterKey) {
   if (filterKey === 'all') {
     return true;
   }
-  return card.dataset.type === filterKey || card.dataset.year === filterKey;
+  return getCardType(card) === filterKey || card.dataset.year === filterKey;
 }
 
-function filterPublications(type, tabElement) {
-  const cards = document.querySelectorAll('.publication-card, .acknowledgement-card, .activity-item');
-  const tabs = document.querySelectorAll('.filter-tab');
-  
-  // Update active tab
-  tabs.forEach(tab => tab.classList.remove('active'));
-  if (tabElement) {
-    tabElement.classList.add('active');
-  }
-  
-  // Filter cards
-  cards.forEach(card => {
-    card.style.display = matchesFilter(card, type) ? 'block' : 'none';
+function countCards(type = filterState.type, year = filterState.year) {
+  return getFilterCards().filter(card => matchesType(card, type) && matchesYear(card, year)).length;
+}
+
+function hasMatchingCards(type, year) {
+  return countCards(type, year) > 0;
+}
+
+function applyFilters() {
+  getFilterCards().forEach(card => {
+    card.style.display = matchesActiveFilters(card) ? 'block' : 'none';
   });
 
-  // Hide entire sections if they have no visible items
   updateSectionVisibility();
 }
 
+function setActiveType(type) {
+  filterState.type = type;
+
+  if (filterState.year !== 'all' && !hasMatchingCards(type, filterState.year)) {
+    filterState.year = 'all';
+  }
+
+  updateFilterControls();
+  applyFilters();
+}
+
+function setActiveYear(year) {
+  filterState.year = year;
+  updateFilterControls();
+  applyFilters();
+  toggleYearMenu(false);
+}
+
+function filterPublications(filterKey) {
+  if (/^\d{4}$/.test(filterKey) || filterKey === 'all-years') {
+    setActiveYear(filterKey === 'all-years' ? 'all' : filterKey);
+    return;
+  }
+
+  setActiveType(filterKey);
+}
+
+function getAvailableYears() {
+  return [...new Set(getFilterCards().map(card => card.dataset.year).filter(Boolean))]
+    .sort((a, b) => Number(b) - Number(a));
+}
+
 function updateFilterCounts() {
-  const cards = document.querySelectorAll('.publication-card, .acknowledgement-card, .activity-item');
-  const counts = {};
-
-  cards.forEach(card => {
-    // Only count for 'all' filter, regardless of card type
-    counts.all = (counts.all || 0) + 1;
-
-    const cardType = card.dataset.type;
-    const cardYear = card.dataset.year;
-
-    // Only count 'publication-card' for specific types (like 'paper', 'presentation')
-    // This assumes 'acknowledgement-card' and 'activity-item' should not contribute to type counts
-    if (card.classList.contains('publication-card') && cardType) {
-      counts[cardType] = (counts[cardType] || 0) + 1;
-    }
-
-    // Always count for year filters, if they have a data-year attribute
-    if (cardYear) {
-      counts[cardYear] = (counts[cardYear] || 0) + 1;
-    }
-  });
-
-  document.querySelectorAll('.filter-tab').forEach(button => {
-    const filterKey = button.dataset.filter;
+  document.querySelectorAll('.filter-tab[data-filter-type]').forEach(button => {
+    const type = button.dataset.filterType;
     const label = button.dataset.label || button.textContent.trim();
-    const count = counts[filterKey] || 0;
-    button.textContent = `${label} (${count})`;
+    const count = countCards(type, filterState.year);
+    const hideEmptyYearOption = filterState.year !== 'all' && type !== 'all' && type !== filterState.type && count === 0;
+
+    button.classList.toggle('active', type === filterState.type);
+    button.hidden = hideEmptyYearOption;
+
+    const dotSpan = document.createElement('span');
+    dotSpan.className = 'filter-tab-dot';
+    dotSpan.setAttribute('aria-hidden', 'true');
+
+    const labelSpan = document.createElement('span');
+    labelSpan.className = 'filter-tab-label';
+    labelSpan.textContent = label;
+
+    const countSpan = document.createElement('span');
+    countSpan.className = 'filter-tab-count';
+    countSpan.textContent = count;
+
+    button.replaceChildren(dotSpan, labelSpan, countSpan);
   });
+}
+
+function createYearOption(year, label, count) {
+  const option = document.createElement('button');
+  const selected = year === filterState.year;
+
+  option.type = 'button';
+  option.className = 'year-option';
+  option.dataset.year = year;
+  option.setAttribute('role', 'option');
+  option.setAttribute('aria-selected', String(selected));
+  option.disabled = count === 0 && !selected;
+
+  const optionMain = document.createElement('span');
+  optionMain.className = 'year-option-main';
+
+  const checkIcon = document.createElement('i');
+  checkIcon.className = selected ? 'fas fa-check' : '';
+  checkIcon.setAttribute('aria-hidden', 'true');
+
+  const optionLabel = document.createElement('span');
+  optionLabel.textContent = label;
+
+  const optionCount = document.createElement('span');
+  optionCount.className = 'year-option-count';
+  optionCount.textContent = count;
+
+  optionMain.append(checkIcon, optionLabel);
+  option.append(optionMain, optionCount);
+
+  return option;
+}
+
+function renderYearMenu() {
+  const menu = document.getElementById('yearFilterMenu');
+  const value = document.getElementById('yearFilterValue');
+  const count = document.getElementById('yearFilterCount');
+
+  if (!menu || !value || !count) {
+    return;
+  }
+
+  menu.innerHTML = '';
+
+  const allCount = countCards(filterState.type, 'all');
+  menu.appendChild(createYearOption('all', 'All years', allCount));
+
+  getAvailableYears().forEach(year => {
+    menu.appendChild(createYearOption(year, year, countCards(filterState.type, year)));
+  });
+
+  const activeLabel = filterState.year === 'all' ? 'All years' : filterState.year;
+  value.textContent = activeLabel;
+  count.textContent = countCards(filterState.type, filterState.year);
+}
+
+function updateFilterControls() {
+  updateFilterCounts();
+  renderYearMenu();
+}
+
+function toggleYearMenu(forceOpen) {
+  const yearFilter = document.querySelector('[data-year-filter]');
+  const button = document.getElementById('yearFilterButton');
+
+  if (!yearFilter || !button) {
+    return;
+  }
+
+  const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !yearFilter.classList.contains('open');
+  yearFilter.classList.toggle('open', shouldOpen);
+  button.setAttribute('aria-expanded', String(shouldOpen));
+}
+
+function getFocusableYearOptions() {
+  return Array.from(document.querySelectorAll('.year-option:not(:disabled)'));
+}
+
+function focusYearOption(step) {
+  const options = getFocusableYearOptions();
+  if (!options.length) {
+    return;
+  }
+
+  const selectedOption = options.find(option => option.getAttribute('aria-selected') === 'true');
+  const currentIndex = options.indexOf(document.activeElement);
+  const fallbackIndex = selectedOption ? options.indexOf(selectedOption) : 0;
+  const nextIndex = currentIndex >= 0
+    ? (currentIndex + step + options.length) % options.length
+    : fallbackIndex;
+
+  options[nextIndex].focus();
+}
+
+function initializeFilters() {
+  const yearFilter = document.querySelector('[data-year-filter]');
+  const yearButton = document.getElementById('yearFilterButton');
+  const yearMenu = document.getElementById('yearFilterMenu');
+
+  document.querySelectorAll('.filter-tab[data-filter-type]').forEach(button => {
+    button.addEventListener('click', () => setActiveType(button.dataset.filterType));
+  });
+
+  if (yearFilter && yearButton && yearMenu) {
+    yearButton.addEventListener('click', () => toggleYearMenu());
+
+    yearButton.addEventListener('keydown', event => {
+      if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleYearMenu(true);
+        focusYearOption(0);
+      }
+
+      if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        toggleYearMenu(true);
+        focusYearOption(-1);
+      }
+    });
+
+    yearMenu.addEventListener('click', event => {
+      const option = event.target.closest('.year-option');
+      if (!option || option.disabled) {
+        return;
+      }
+
+      setActiveYear(option.dataset.year);
+      yearButton.focus();
+    });
+
+    yearMenu.addEventListener('keydown', event => {
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        focusYearOption(1);
+      }
+
+      if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        focusYearOption(-1);
+      }
+
+      if (event.key === 'Home') {
+        event.preventDefault();
+        getFocusableYearOptions()[0]?.focus();
+      }
+
+      if (event.key === 'End') {
+        event.preventDefault();
+        getFocusableYearOptions().at(-1)?.focus();
+      }
+
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        document.activeElement.click();
+      }
+
+      if (event.key === 'Escape') {
+        toggleYearMenu(false);
+        yearButton.focus();
+      }
+    });
+
+    document.addEventListener('click', event => {
+      if (!yearFilter.contains(event.target)) {
+        toggleYearMenu(false);
+      }
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        toggleYearMenu(false);
+      }
+    });
+  }
+
+  updateFilterControls();
+  applyFilters();
 }
 
 function normalizeDateString(dateText) {
@@ -1078,10 +1570,8 @@ function injectStructuredData() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  updateFilterCounts();
+  initializeFilters();
   injectStructuredData();
-  // Ensure section visibility is correct on initial load
-  updateSectionVisibility();
 });
 
 // Toggle visibility of sections based on whether they contain any visible items
