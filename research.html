@@ -256,6 +256,10 @@ body {
   box-shadow: 0 0 0 3px var(--filter-dot-ring);
 }
 
+.filter-tab[hidden] {
+  display: none;
+}
+
 .filter-tab::after {
   content: '';
   position: absolute;
@@ -1201,6 +1205,12 @@ function hasMatchingCards(type, year) {
   return countCards(type, year) > 0;
 }
 
+function normalizeFilterState() {
+  if (filterState.year !== 'all' && filterState.type !== 'all' && !hasMatchingCards(filterState.type, filterState.year)) {
+    filterState.type = 'all';
+  }
+}
+
 function applyFilters() {
   getFilterCards().forEach(card => {
     card.style.display = matchesActiveFilters(card) ? 'block' : 'none';
@@ -1222,6 +1232,7 @@ function setActiveType(type) {
 
 function setActiveYear(year) {
   filterState.year = year;
+  normalizeFilterState();
   updateFilterControls();
   applyFilters();
   toggleYearMenu(false);
@@ -1246,10 +1257,11 @@ function updateFilterCounts() {
     const type = button.dataset.filterType;
     const label = button.dataset.label || button.textContent.trim();
     const count = countCards(type, filterState.year);
-    const hideEmptyYearOption = filterState.year !== 'all' && type !== 'all' && type !== filterState.type && count === 0;
+    const hideEmptyYearOption = filterState.year !== 'all' && type !== 'all' && count === 0;
 
     button.classList.toggle('active', type === filterState.type);
     button.hidden = hideEmptyYearOption;
+    button.style.display = hideEmptyYearOption ? 'none' : '';
 
     const dotSpan = document.createElement('span');
     dotSpan.className = 'filter-tab-dot';
@@ -1322,6 +1334,7 @@ function renderYearMenu() {
 }
 
 function updateFilterControls() {
+  normalizeFilterState();
   updateFilterCounts();
   renderYearMenu();
 }
