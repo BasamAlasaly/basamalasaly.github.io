@@ -14,6 +14,15 @@ Read my latest articles on my [Medium Blog](https://basamalasaly.medium.com/) pa
 ## Contact
 Feel free to reach out to me through the [Contact](https://www.basamalasaly.com/contact.html) page.
 
+## Publication Records
+Canonical publication metadata is stored in [`data/publications.json`](data/publications.json). It records the formal publication month, citation details, identifiers, related presentations, affiliation wording, and synchronization status for the website, resumes, LinkedIn, and Google Scholar.
+
+After changing the ledger or `research.html`, validate that the website still matches the canonical records:
+
+```sh
+node scripts/validate-publications.js
+```
+
 ## License
 All content on this website is protected by copyright. Unauthorized use and/or duplication of this material without express and written permission from this site's author and/or owner is strictly prohibited. See the [LICENSE](LICENSE) file for more details.
 

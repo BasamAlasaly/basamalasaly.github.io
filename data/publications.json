@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "lastReviewed": "2026-11-01",
+  "datePolicy": {
+    "websiteAndResumeDisplay": "Month Year",
+    "publicationRule": "Use the formal journal issue or proceedings month, not an online-first date or event date.",
+    "presentationRule": "Use the month in which the presentation occurred.",
+    "exactDayRule": "Store a verified exact day when available, but expose it only on platforms that require one.",
+    "affiliationRule": "Use University of Pennsylvania for publication records; employment pages may retain Perelman School of Medicine wording."
+  },
+  "platformStatusValues": [
+    "included",
+    "auto-indexed",
+    "deferred",
+    "intentionally-omitted",
+    "not-reviewed"
+  ],
+  "publications": [
+    {
+      "id": "psb-2027-ambient-ai-engagement",
+      "recordType": "conference-proceedings-paper",
+      "title": "A multimodal framework for assessing patient-physician engagement in ambient AI scribe evaluations",
+      "canonicalDate": {
+        "iso": "2027-01",
+        "display": "January 2027",
+        "precision": "month",
+        "basis": "formal proceedings volume"
+      },
+      "exactPublicationDate": null,
+      "citation": {
+        "venue": "Proceedings of the Pacific Symposium on Biocomputing (PSB) 2027",
+        "volume": null,
+        "issue": null,
+        "pages": "597-612",
+        "publisher": null,
+        "affiliation": "University of Pennsylvania"
+      },
+      "identifiers": {
+        "doi": null,
+        "pubmed": null,
+        "pmc": null
+      },
+      "links": {
+        "primary": "https://psb.stanford.edu/psb-online/proceedings/psb27/psb27_sociotech_592-687_v2.pdf",
+        "pubmed": null
+      },
+      "relatedPresentations": [
+        {
+          "type": "oral-presentation",
+          "date": "2027-01",
+          "venue": "Pacific Symposium on Biocomputing (PSB) 2027",
+          "location": "Big Island, Hawaii"
+        }
+      ],
+      "platforms": {
+        "website": {
+          "status": "included",
+          "cardId": "psb-2027-ambient-ai-engagement"
+        },
+        "resume": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        },
+        "linkedin": {
+          "status": "deferred",
+          "note": "Future-dated proceedings record."
+        },
+        "googleScholar": {
+          "status": "deferred",
+          "note": "Wait for the proceedings record to be indexed."
+        }
+      }
+    },
+    {
+      "id": "videocap-redcap-multimedia-labeling",
+      "recordType": "preprint",
+      "title": "VideoCap: Enabling REDCap as a Tool for Crowdsourced Multimedia-Labeling Research",
+      "canonicalDate": {
+        "iso": "2026-07",
+        "display": "July 2026",
+        "precision": "month",
+        "basis": "medRxiv posting month"
+      },
+      "exactPublicationDate": "2026-07-09",
+      "citation": {
+        "venue": "medRxiv",
+        "volume": null,
+        "issue": null,
+        "pages": null,
+        "publisher": "Cold Spring Harbor Laboratory",
+        "affiliation": "University of Pennsylvania"
+      },
+      "identifiers": {
+        "doi": "10.64898/2026.06.26.26355995",
+        "pubmed": null,
+        "pmc": null
+      },
+      "links": {
+        "primary": "https://doi.org/10.64898/2026.06.26.26355995",
+        "pubmed": null
+      },
+      "relatedPresentations": [],
+      "platforms": {
+        "website": {
+          "status": "included",
+          "cardId": "videocap-redcap-multimedia-labeling"
+        },
+        "resume": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        },
+        "linkedin": {
+          "status": "included",
+          "lastChecked": "2026-11-01",
+          "displayDate": "July 9, 2026"
+        },
+        "googleScholar": {
+          "status": "auto-indexed",
+          "lastChecked": "2026-11-01"
+        }
+      }
+    },
+    {
+      "id": "observer-outpatient-care-dataset",
+      "recordType": "journal-article",
+      "title": "Observer: Creation of a Novel Multimodal Dataset for Outpatient Care Research",
+      "canonicalDate": {
+        "iso": "2026-02",
+        "display": "February 2026",
+        "precision": "month",
+        "basis": "formal journal issue"
+      },
+      "exactPublicationDate": null,
+      "citation": {
+        "venue": "Journal of the American Medical Informatics Association",
+        "volume": "33",
+        "issue": "2",
+        "pages": "424-433",
+        "publisher": "Oxford University Press",
+        "affiliation": "University of Pennsylvania"
+      },
+      "identifiers": {
+        "doi": "10.1093/jamia/ocaf182",
+        "pubmed": "41144304",
+        "pmc": null
+      },
+      "links": {
+        "primary": "https://doi.org/10.1093/jamia/ocaf182",
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/41144304/"
+      },
+      "relatedPresentations": [],
+      "platforms": {
+        "website": {
+          "status": "included",
+          "cardId": "observer-outpatient-care-dataset"
+        },
+        "resume": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        },
+        "linkedin": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        },
+        "googleScholar": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        }
+      }
+    },
+    {
+      "id": "speaker-role-clinical-conversations",
+      "recordType": "conference-proceedings-paper",
+      "title": "Speaker Role Identification in Clinical Conversations",
+      "canonicalDate": {
+        "iso": "2026-01",
+        "display": "January 2026",
+        "precision": "month",
+        "basis": "formal proceedings volume"
+      },
+      "exactPublicationDate": null,
+      "citation": {
+        "venue": "Proceedings of the Pacific Symposium on Biocomputing (PSB) 2026",
+        "volume": "31",
+        "issue": null,
+        "pages": "144-157",
+        "publisher": "World Scientific",
+        "affiliation": "University of Pennsylvania"
+      },
+      "identifiers": {
+        "doi": "10.1142/9789819824755_0011",
+        "pubmed": null,
+        "pmc": "PMC12632672"
+      },
+      "links": {
+        "primary": "https://doi.org/10.1142/9789819824755_0011",
+        "pubmed": null
+      },
+      "relatedPresentations": [
+        {
+          "type": "poster-presentation",
+          "date": "2025-09",
+          "venue": "Pacific Symposium on Biocomputing (PSB) 2026",
+          "location": "Hawaii, USA",
+          "doi": "10.7490/f1000research.1120293.1"
+        }
+      ],
+      "platforms": {
+        "website": {
+          "status": "included",
+          "cardId": "speaker-role-clinical-conversations"
+        },
+        "resume": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        },
+        "linkedin": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        },
+        "googleScholar": {
+          "status": "included",
+          "lastChecked": "2026-11-01",
+          "note": "Profile citation is normalized to the final PSB record while the underlying Scholar cluster still includes the medRxiv version."
+        }
+      }
+    },
+    {
+      "id": "medviddeid-clinical-video-privacy",
+      "recordType": "journal-article",
+      "title": "MedVidDeID: Protecting privacy in clinical encounter video recordings",
+      "canonicalDate": {
+        "iso": "2025-10",
+        "display": "October 2025",
+        "precision": "month",
+        "basis": "formal journal publication month"
+      },
+      "exactPublicationDate": null,
+      "citation": {
+        "venue": "Journal of Biomedical Informatics",
+        "volume": null,
+        "issue": null,
+        "pages": "104901",
+        "publisher": "Elsevier",
+        "affiliation": "University of Pennsylvania"
+      },
+      "identifiers": {
+        "doi": "10.1016/j.jbi.2025.104901",
+        "pubmed": null,
+        "pmc": null
+      },
+      "links": {
+        "primary": "https://doi.org/10.1016/j.jbi.2025.104901",
+        "pubmed": null
+      },
+      "relatedPresentations": [
+        {
+          "type": "oral-presentation",
+          "date": "2025-03",
+          "venue": "American Medical Informatics Association (AMIA) 2025 Informatics Summit",
+          "location": "Pittsburgh, PA"
+        }
+      ],
+      "platforms": {
+        "website": {
+          "status": "included",
+          "cardId": "medviddeid-clinical-video-privacy"
+        },
+        "resume": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        },
+        "linkedin": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        },
+        "googleScholar": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        }
+      }
+    },
+    {
+      "id": "aaai-modality-bias-video-qa",
+      "recordType": "conference-proceedings-paper",
+      "title": "Assessing Modality Bias in Video Question Answering Benchmarks with Multimodal Large Language Models",
+      "canonicalDate": {
+        "iso": "2025-04",
+        "display": "April 2025",
+        "precision": "month",
+        "basis": "formal proceedings publication month"
+      },
+      "exactPublicationDate": "2025-04-11",
+      "citation": {
+        "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+        "volume": "39",
+        "issue": "19",
+        "pages": null,
+        "publisher": "AAAI Press",
+        "affiliation": "University of Pennsylvania"
+      },
+      "identifiers": {
+        "doi": "10.1609/aaai.v39i19.34183",
+        "pubmed": null,
+        "pmc": null
+      },
+      "links": {
+        "primary": "https://doi.org/10.1609/aaai.v39i19.34183",
+        "pubmed": null
+      },
+      "relatedPresentations": [],
+      "platforms": {
+        "website": {
+          "status": "included",
+          "cardId": "aaai-modality-bias-video-qa"
+        },
+        "resume": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        },
+        "linkedin": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        },
+        "googleScholar": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        }
+      }
+    },
+    {
+      "id": "btki-cll-s210",
+      "recordType": "conference-abstract",
+      "title": "POSTER: CLL-773 Real-World Outcomes of BTK Inhibitors (BTKi) in Chronic Lymphocytic Leukemia/Small Lymphocytic Lymphoma (CLL/SLL) Patients With Preexisting Cardiovascular Comorbidities",
+      "canonicalDate": {
+        "iso": "2025-09",
+        "display": "September 2025",
+        "precision": "month",
+        "basis": "formal journal supplement issue"
+      },
+      "exactPublicationDate": null,
+      "citation": {
+        "venue": "Clinical Lymphoma Myeloma and Leukemia",
+        "volume": "25",
+        "issue": "Supplement 1",
+        "pages": "S210",
+        "publisher": "Elsevier",
+        "affiliation": "Sidney Kimmel Medical College"
+      },
+      "identifiers": {
+        "doi": "10.1016/S2152-2650(25)00688-3",
+        "pubmed": null,
+        "pmc": null
+      },
+      "links": {
+        "primary": "https://doi.org/10.1016/S2152-2650(25)00688-3",
+        "pubmed": null
+      },
+      "relatedPresentations": [
+        {
+          "type": "poster-presentation",
+          "date": "2025-09",
+          "venue": "Society of Hematologic Oncology (SOHO) 2025",
+          "location": "Houston, TX"
+        }
+      ],
+      "platforms": {
+        "website": {
+          "status": "included",
+          "cardId": "btki-cll-s210",
+          "title": "Real-World Outcomes of BTK Inhibitors (BTKi) in Chronic Lymphocytic Leukemia/Small Lymphocytic Lymphoma (CLL/SLL) Patients With Preexisting Cardiovascular Comorbidities",
+          "venue": "Society of Hematologic Oncology (SOHO) 2025"
+        },
+        "resume": {
+          "status": "included",
+          "lastChecked": "2026-11-01",
+          "note": "Represented as the SOHO poster presentation."
+        },
+        "linkedin": {
+          "status": "included",
+          "lastChecked": "2026-11-01",
+          "note": "Represented as the SOHO poster presentation."
+        },
+        "googleScholar": {
+          "status": "included",
+          "lastChecked": "2026-11-01"
+        }
+      }
+    },
+    {
+      "id": "btki-cll-s531-s532",
+      "recordType": "conference-abstract",
+      "title": "CLL-773: Real-World Outcomes of BTK Inhibitors (BTKi) in Chronic Lymphocytic Leukemia/Small Lymphocytic Lymphoma (CLL/SLL) Patients With Preexisting Cardiovascular Comorbidities",
+      "canonicalDate": {
+        "iso": "2025-09",
+        "display": "September 2025",
+        "precision": "month",
+        "basis": "formal journal supplement issue"
+      },
+      "exactPublicationDate": null,
+      "citation": {
+        "venue": "Clinical Lymphoma Myeloma and Leukemia",
+        "volume": "25",
+        "issue": "Supplement 1",
+        "pages": "S531-S532",
+        "publisher": "Elsevier",
+        "affiliation": "Sidney Kimmel Medical College"
+      },
+      "identifiers": {
+        "doi": "10.1016/S2152-2650(25)01869-5",
+        "pubmed": null,
+        "pmc": null
+      },
+      "links": {
+        "primary": "https://doi.org/10.1016/S2152-2650(25)01869-5",
+        "pubmed": null
+      },
+      "relatedPresentations": [],
+      "platforms": {
+        "website": {
+          "status": "intentionally-omitted",
+          "note": "Retained as a distinct indexed abstract rather than a second portfolio card."
+        },
+        "resume": {
+          "status": "intentionally-omitted",
+          "note": "The SOHO poster is represented by the S210 record."
+        },
+        "linkedin": {
+          "status": "intentionally-omitted",
+          "note": "The SOHO poster is represented by the S210 record."
+        },
+        "googleScholar": {
+          "status": "included",
+          "lastChecked": "2026-11-01",
+          "note": "Keep separate from the S210 record because the DOI and page range differ."
+        }
+      }
+    }
+  ]
+}
